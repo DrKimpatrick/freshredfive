@@ -1,4 +1,4 @@
 # freshred5
-Fresh red 5 site
+A simple site for the red five company
+ Developing the backend code in python/Flask for easy deployment.
 
-Testing the push action

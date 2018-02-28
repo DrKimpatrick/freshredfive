@@ -2,7 +2,7 @@
 	background-color: rgba(0, 0, 0, 0.3);
 	margin: 0;
 	padding: 20px;
-}
+} 
 .carousel h6 a {
 	padding: 10px 20px;
 	border: 1px solid white;
@@ -20,7 +20,6 @@
 .vision {
 	background-color: #f9f9f9;
 	padding: 20px 0;
-	color: #670101;
 	text-align: justify;
     text-justify: inter-word;
 }
@@ -40,7 +39,12 @@
 	color: white;
 }
 .freeshowad {
-	min-height: 260px;
-	margin-top: 30px;
-	padding: 20px;
+	background-image: url("../images/blackfamily.png");
+	background-repeat: no-repeat, repeat;
+	padding: 150px 0;
+}
+.freeshowad .container {
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-bottom: 30px;
+	color: white;
 }

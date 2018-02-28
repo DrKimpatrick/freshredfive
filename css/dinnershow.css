@@ -6,17 +6,25 @@
 	background-color: #eaeaea;
 }
 .customnav button {
-	background-color: #777; 
+	background-color: #eaeaea; 
 }
-.customnav .icon-bar {
-	background-color: white;
+.customnav .navbar-toggler-icon {
+	color: white;
 }
 .customnavlinks {
-	padding-top: 15px;
-    font-size: 16px;
+	font-size: 16px;
+}
+.customnavlinks li {
+	padding: 0 10px;
 }
 .customnavlinks a {
-	color: #CF0505;
+	color: #CF0505 !important;
+}
+.customnavlinks a:hover {
+	background-color: #eaeaea;
+}
+.mainlogolink a:hover {
+	background-color: white;
 }
 .imagebanner {
 	margin-top: 55px;
@@ -25,6 +33,9 @@
 }
 .majorheadings {
 	font-size: 4.1em;
+}
+.jumbotron {
+	margin-bottom: 0 !important;
 }
 #dinnershowimage img {
 	width: 100%;
@@ -46,10 +57,15 @@
 	color: white;
 }
 .whattoexpect {
-	margin-bottom: 50px;
+	background-color: #f9f9f9;
+	padding: 20px 0;
+	text-align: justify;
+    text-justify: inter-word;
 }
 .whattoexpect p {
 	margin: 17px 0;
+	color: #670101;
+	font-size: 20px;
 }
 .faq {
 	margin-top: 30px;
@@ -57,22 +73,45 @@
 .faq h3 {
 	margin-top: 0px;
 }
+.faq .row {
+	margin-bottom: 30px;
+	margin-right: 0;
+	margin-left: 0;
+}
+/** 
 .faq .col-lg-6 {
 	margin-bottom: 80px;
-}
+}*/
 .question-icon {
 	background-color: #670101;
 	color: white;
-	padding: 0 10px;
-	float: left;
-	margin-right: 15px;
-	margin-bottom: 10px;
-	font-size: 35px
+	font-size: 35px;
+	max-width: 60px !important;
+    max-height: 60px;
+}
+.saladmasterad {
+	background-color: black;
+	font-size: 80px;
+	color: white;
+	text-align: center;
+	font-family: TimesNewRoman;
+}
+.saladmasterad a, .saladmasterad a:hover {
+	color: white;
+	text-decoration: none;
+}
+.saladmasterad img {
+	width: 250px;
+	margin-right: 20px;
 }
 .bottomlinkssection {
 	min-height: 200px;
 	padding-top: 20px;
 	padding-bottom: 0;
+	font-size: 14px;
+}
+.bottomlinkssection h5 {
+	font-size: 15px;
 }
 .bottomlinkssection a, .bottomlinkssection a:visited {
 	color: white;
@@ -88,6 +127,9 @@
 .bottomlinkssection .row {
 	margin: 0;
 	padding: 0;
+}
+.bottomlinkssection hr {
+	border-color: white;
 }
 footer {
 	padding: 7px;

@@ -27,17 +27,6 @@
 	margin: 17px 0;
 	font-size: 20px;
 }
-.linkbutton {
-	padding: 10px 20px;
-	background-color: black;
-	font-size: 17px;
-	color: white;
-}
-.linkbutton:hover {
-	background-color: #670101;
-	text-decoration: none;
-	color: white;
-}
 .freeshowad {
 	background-image: url("../images/blackfamily.png");
 	background-repeat: no-repeat, repeat;

@@ -127,3 +127,14 @@ footer {
 	padding: 7px;
 	margin: 0;
 }
+.linkbutton {
+	padding: 10px 20px;
+	background-color: black;
+	font-size: 17px;
+	color: white;
+}
+.linkbutton:hover {
+	background-color: #670101;
+	text-decoration: none;
+	color: white;
+}

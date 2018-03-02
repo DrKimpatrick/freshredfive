@@ -138,3 +138,30 @@ footer {
 	text-decoration: none;
 	color: white;
 }
+
+.belownav {
+	margin-top: 55px;
+}
+.centered {
+	text-align: center;
+}
+.greycontainer {
+	background-color: #e9ecef;
+	padding: 50px 0;
+}
+.whitecontainer {
+	background-color: #fff;
+	padding: 50px 0;
+}
+.marooncontainer {
+	background-color: #670101;
+	padding: 50px 0;
+	color: white;
+}
+.major-body-content h1 {
+	font-size: 4.1em;
+	font-weight: normal;
+}
+.major-body-content p {
+	font-size: 22px;
+}

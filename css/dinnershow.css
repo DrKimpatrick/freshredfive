@@ -1,6 +1,6 @@
 .customnav {
 	background-color: white; 
-	min-height: 80px;
+	min-height: 80px; 
 }
 .customnav .active {
 	background-color: #eaeaea;
@@ -96,7 +96,7 @@
 	width: 200px;
 	margin-right: 20px;
 }
-.bottomlinkssection {
+.bottomlinkssection { 
 	min-height: 200px;
 	padding-top: 20px;
 	padding-bottom: 0;

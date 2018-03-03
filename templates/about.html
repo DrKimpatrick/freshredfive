@@ -1,6 +1,280 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block body %}
-<h1>About us</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, laudantium repudiandae at. At necessitatibus magni, aliquid, suscipit aperiam explicabo reiciendis. Accusamus delectus ducimus error dignissimos facilis voluptatum, at temporibus debitis!</p>
-{% endblock %}
+	<!-- FONT AWESOME - icons -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="css/about.css">
+
+	<!-- BOOSTRAP CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<title>Home</title>
+</head>
+
+<body style="" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+	<nav class="navbar navbar-expand-md navbar-light bg-inverse fixed-top customnav">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse customnavlinks" id="navbarTogglerDemo01">
+				<div class="mainlogolink">
+					<a class="navbar-brand" href="index.html"><img src="images/logo-dark.png" alt="Logo"></a>
+				</div>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item dropdown active">
+			            <a class="nav-link dropdown-toggle" href="about.html" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ABOUT RED5</a>
+			            <div class="dropdown-menu" aria-labelledby="dropdown01">
+							<a class="dropdown-item" href="about.html#overview">COMPANY OVERVIEW</a>
+							<a class="dropdown-item" href="about.html#history">HISTORY OF RED5</a>
+							<a class="dropdown-item" href="about.html#social">SOCIAL AGENDA</a>
+							<a class="dropdown-item" href="about.html#economic">ECONOMIC AGENDA</a>
+							<a class="dropdown-item" href="about.html#members">TEAM MEMBERS</a>
+			            </div>
+		          	</li>
+					<li class="nav-item">
+						<a class="nav-link" href="dinnershow.html">DINNER SHOW</a>
+					</li>
+					<li class="nav-item dropdown">
+			            <a class="nav-link dropdown-toggle" href="cookmore.html" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">COOK MORE</a>
+			            <div class="dropdown-menu" aria-labelledby="dropdown01">
+		            		<a class="dropdown-item" href="blog.html">HEALTH BLOG</a>
+							<a class="dropdown-item" href="recipes.html">RECIPIES</a>
+							<a class="dropdown-item" href="usageclub.html">USAGE CLUB</a>
+							<a class="dropdown-item" href="cookschool.html">COOK SCHOOL</a>
+			            </div>
+		          	</li>
+		          	<li class="nav-item dropdown">
+			            <a class="nav-link dropdown-toggle" href="startbusiness.html" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">START A BUSINESS</a>
+			            <div class="dropdown-menu" aria-labelledby="dropdown01">
+			             	<a class="dropdown-item" href="lifechanging.html">LIFE CHANGING EVENT</a>
+							<a class="dropdown-item" href="openhouse.html">OPEN HOUSE</a>
+			            </div>
+		          	</li>
+					<li class="nav-item">
+						<a class="nav-link" href="lunchbox.html">LUNCH BOX</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="blog.html">BLOG</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+    <!-- CAROUSEL -->
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item item active">
+				<img class="d-block w-100" src="images/about/team.jpg" alt="First slide">
+				<div class="carousel-caption d-none d-md-block">
+
+			  	</div>
+			</div>
+			<div class="carousel-item item">
+			  	<img class="d-block w-100" src="images/about/leader2.jpg" alt="Second slide">
+				<div class="carousel-caption d-none d-md-block">
+				    <h1>Danston Mugarura</h1>
+				    <h5>Chief Executive Officer, Red5</h5>
+			  	</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<div class="aboutinfo" id="overview">
+		<div class="container">
+			<h1>COMPANY OVERVIEW</h1>
+			<p>Today's lifestyle puts great demands on all of us. To keep up and stay healthy, we need to focus on a holistic improvement lifestyle. Red 5 is in the business to inspire people to eat healthier and transform the way they prepare their food in the healthiest way just by changing the methodology of cooking. We do more than just teach nutrition and education. We host cooking demonstrations, customized to the customer. We do Cook Schools, Usage and Lifestyle classes to our community. We share amazing business opportunities. We are looking for more people with leadership skills and values that are committed to contribute to our vision of ,,Doing Well, Doing Good’’. Currently we have 10 more offices opening up like ours all over East Africa and our mission is to open 20 by 2020</p>
+		</div>
+	</div>
+    
+	<div class="aboutinfo withbackground" id="history">
+		<div class="container">
+			<h1>HISTORY</h1>
+			<p>Red 5 was originally a UK based company in Milton Keynes and has been trading Saladmaster products for about 2 years. After a few visits and dinner demonstrations in Uganda, our CEO has seen great potential and relocated the business to Muyenga, Kampala where we are based now. Just in two years of business in Uganda, Red 5 has succeeded beyond its expectations. We have built a large clientele and many successful consultants that are becoming their own business owners all due to community’s receptiveness to health and lifestyle. We have numerous success stories of people who improved their quality of life through simple changes, including how they prepare foods at home with Saladmaster.</p>
+		</div>
+	</div>
+    
+	<div class="aboutinfo" id="social">
+		<div class="container">
+			<h1>SOCIAL AGENDA</h1>
+			<p>The Saladmaster product is remarkable. It's believed by many to be 25 years ahead of it time. Careful crafted by the best engineers and scientists they could assemble. They employed the best available technology to build a product for a purpose not for a person, not down to a price but up to a standard. <br><br>
+
+			"Having personally experienced the transformation it brought to my family and my immediate circle. I developed a compulsion to bring it to this market of East Africa and neighboring regions. A decision I cherish increasingly as family by family lives begin to transform." 
+			– DanstunMugarura, CEO of Red 5<br><br>
+
+			Red 5’s focus is to serve not sell. To have everyone experience Saladmaster in some capacity. 
+			Our business is built on a premise of do well and do good.
+			But we cannot do it alone, we believe that all of us as teachers, counsellors, mums, dad's etc. have a duty and responsibility to share this education with all our nearest and dearest. We are looking for a different kind of a leader, not just fronted by resources or reputation but by real character and real desire to change lives. 
+			</p>
+		</div>
+	</div>
+    
+	<div class="aboutinfo withbackground" id="economic">
+		<div class="container">
+			<h1>ECONOMIC AGENDA</h1>
+			<p>Yes in this market we are a startup but one with deep roots... We are backed by a global leader with over 100 years of manufacturing and 71 years of back to back exponential growth.<br><br>
+
+			Built by us for us.... this is ours to build to whatever size and desired growth that we seek individually or collectively as group.<br><br>
+
+			Financial literacy is one of our core objectives. I liken this to our land, we cannot have the most fertile land, the seeds yet we starve- Africa is the next frontier. We have the brain, the passion and the opportunity.... so why not you? 
+
+			It's not lack of money, it's lack of knowledge.It's not going to be lack of skill but a lack of will.The opportunity is vast and unbiased.<br><br>
+
+			There is no seniority. You advance on merit. Only you, can stop you or promote, this is your time.<br><br>
+
+			So what will you do? Why not you?</p>
+		</div>
+	</div>
+    
+	<div class="aboutinfo members" id="members">
+		<div class="container">
+			<h1>TEAM MEMBERS</h1>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="member-entity">
+						<div class="row" style="margin-bottom: 0;">
+							<div class="col-sm-3">
+								<img src="images/about/leader.jpg" alt="Team Member">
+							</div>
+							<div class="col-sm-9">
+								<p>Danston Mugarura a global business expert of Ugandan – British descent. He is an accomplished serial entrepreneur and a self-made millionaire! 
+								His business career started from a very humble start at the age of 16, starting with door to door selling, and has grown into global enterprises with interests in building large sales and marketing organisations, telecoms and IT businesses. 
+								<br><br>
+								He has championed and raised huge funds for various government projects in renewable energy, mining, ICT and global finance, and is currently the CEO of Red5, a food science &amp; technology company with interests in real estate. 
+								<br><br>
+								A philanthropist, his vision of pursuing and attaining success is summarised in what he refers to as "Doing well, Doing good". When he is not speaking at global engagements or searching for ways to increase performances and investing in the next generation of leaders, he is spending time with his family. 
+								His next leadership challenge is to contribute to efforts looking to Awaken Africans to the real Africa opportunity".</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="member-entity">
+						<div class="row" style="margin-bottom: 0;">
+							<div class="col-sm-3">
+								<img src="images/anon.png" alt="Team Member">
+							</div>
+							<div class="col-sm-9">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam vulputate dignissim suspendisse in est ante. Sed sed risus pretium quam vulputate. Semper auctor neque vitae tempus quam pellentesque. Porttitor rhoncus dolor purus non enim praesent elementum facilisis leo. Dignissim diam quis enim lobortis scelerisque fermentum dui.<br><br>
+
+								Nisi vitae suscipit tellus mauris a diam maecenas sed. Cursus vitae congue mauris rhoncus aenean. Elit ullamcorper dignissim cras tincidunt. Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris. Dictumst vestibulum rhoncus est pellentesque elit. Nisl vel pretium lectus quam id leo in vitae turpis. Nulla pellentesque dignissim enim sit amet venenatis urna. Etiam sit amet nisl purus in.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="member-entity">
+						<div class="row" style="margin-bottom: 0;">
+							<div class="col-sm-3">
+								<img src="images/anon.png" alt="Team Member">
+							</div>
+							<div class="col-sm-9">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam vulputate dignissim suspendisse in est ante. Sed sed risus pretium quam vulputate. Semper auctor neque vitae tempus quam pellentesque. Porttitor rhoncus dolor purus non enim praesent elementum facilisis leo. Dignissim diam quis enim lobortis scelerisque fermentum dui.<br><br>
+
+								Nisi vitae suscipit tellus mauris a diam maecenas sed. Cursus vitae congue mauris rhoncus aenean. Elit ullamcorper dignissim cras tincidunt. Facilisi nullam vehicula ipsum a arcu cursus vitae congue mauris. Dictumst vestibulum rhoncus est pellentesque elit. Nisl vel pretium lectus quam id leo in vitae turpis. Nulla pellentesque dignissim enim sit amet venenatis urna. Etiam sit amet nisl purus in.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <!-- Footer section -->
+    <div class="maroonsection bottomlinkssection">
+    	<div class="row">
+    		<div class="col-sm-2">
+    			<div class="saladmasterad">
+					<!--<a href="#" target="_blank">-->
+						<img src="images/saladmaster.png" alt="saladmaster logo">
+					<!--</a>-->
+				</div>
+    		</div>
+			<div class="col-sm-2">
+			  	<h5>SERVICE HOURS</h5>
+			  	<hr style="color: white;">
+			  	8:00 A.M - 5:00 P.M<br>
+				Monday - Friday<br>
+				Excluding Holidays<br>
+				<a href="tel:+256781889900">+256-781-889900</a><br><br>
+				<a href="#" target="_blank" style="margin-right: 20px; font-size: 25px">
+			  		<i class="fab fa-facebook-f"></i>
+			  	</a>
+			  	<a href="#" target="_blank" style="margin-right: 20px; font-size: 25px">
+			  		<i class="fab fa-twitter"></i>
+			  	</a>
+			  	<a href="#" target="_blank" style="font-size: 25px">
+			  		<i class="fab fa-youtube"></i>
+			  	</a>
+			</div>
+			<div class="col-sm-2">
+			  	<h5>ABOUT RED5</h5>
+			  	<hr style="color: white">
+			  	<div><a href="about.html#overview">COMPANY OVERVIEW</a></div>
+				<div><a href="about.html#history">HISTORY OF RED5</a></div>
+				<div><a href="about.html#social">SOCIAL AGENDA</a></div>
+				<div><a href="about.html#economic">ECONOMIC AGENDA</a></div>
+				<div><a href="about.html#members">TEAM MEMBERS</a></div>
+			</div>
+			<div class="col-sm-2">
+			  	<h5>COOK MORE</h5>
+			  	<hr style="color: white">
+			  	<div><a href="blog.html">HEALTH BLOG</a></div>
+				<div><a href="recipes.html">RECIPIES</a></div>
+				<div><a href="usageclub.html">USAGE CLUB</a></div>
+				<div><a href="cookschool.html">COOK SCHOOL</a></div>
+			</div>
+			<div class="col-sm-2">
+			  	<h5>START A BUSINESS</h5>
+			  	<hr style="color: white">
+			  	<div><a href="lifechanging.html">LIFE CHANGING EVENT</a></div>
+				<div><a href="openhouse.html">OPEN HOUSE</a></div>
+			</div>
+			<div class="col-sm-2">
+				<h5>MORE</h5>
+				<hr style="color: white">
+			  	<div><a href="dinnershow.html">DINNER SHOW</a></div>
+			  	<div><a href="lunchbox.html">LUNCH BOX</a></div>
+			  	<div><a href="blog.html">BLOG</a></div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		© 2018 EatForLife
+	</footer>
+
+	<!-- for Boostrap -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+</body>
+
+</html>

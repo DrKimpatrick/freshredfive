@@ -20,27 +20,26 @@
 .vision {
 	background-color: #f9f9f9;
 	padding: 20px 0;
-	color: #670101;
 	text-align: justify;
     text-justify: inter-word;
 }
-.vision p {
+.vision p{
 	margin: 17px 0;
-	font-size: 20px;
+	font-size: 18px;
+/*	border: 1px solid black;
+	padding-right: 20px;*/
 }
-.linkbutton {
-	padding: 10px 20px;
-	background-color: black;
-	font-size: 17px;
-	color: white;
-}
-.linkbutton:hover {
-	background-color: #670101;
-	text-decoration: none;
-	color: white;
+.vision #left-side{
+	border-right: 1px solid #670101;
+	padding-right: 20px;
 }
 .freeshowad {
-	min-height: 260px;
-	margin-top: 30px;
-	padding: 20px;
+	background-image: url("../images/blackfamily.png");
+	background-repeat: no-repeat, repeat;
+	padding: 150px 0;
+}
+.freeshowad .container {
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-bottom: 30px;
+	color: white;
 }

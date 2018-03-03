@@ -1,0 +1,63 @@
+.about .container {
+	font-size: 20px;
+	text-align: center;
+	padding-top: 40px;
+}
+.services .container {
+	font-size: 20px;
+	padding: 50px 0;
+	text-align: center;
+}
+.service-card {
+	background: #EAE4D8;
+    padding: 20px;
+    border-top: 5px solid #DA251D;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 50px;
+}
+.services-heading {
+	font-weight: bold;
+	margin: 10px 0;
+}
+.lunchbox-menu {
+	background-color: #F7F3E2;
+	font-size: 20px;
+	text-align: center;
+	padding: 50px 0;
+}
+.lunchbox-menu .row {
+	padding-top: 30px;
+}
+.menu-card {
+	border: 1px solid #ccc;
+	padding-bottom: 15px;
+}
+.menu-card p {
+	font-size: 16px;
+}
+.menu-card img {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 5px;
+	padding: 2px;
+}
+.order-button {
+	padding: 10px;
+	background-color: black;
+	font-size: 17px;
+	color: white;
+}
+.order-button:hover {
+	background-color: #670101;
+	text-decoration: none;
+	color: white;
+}
+
+.booking {
+	font-size: 20px;
+	text-align: center;
+	padding: 50px 0;
+}
+.booking .form-row {
+	padding: 30px 0;
+}

@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
 #from data import Articles
-from flask_mysqldb import MySQL
+#from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from passlib.hash import pbkdf2_sha256
@@ -17,7 +17,7 @@ app.config['MYSQL_PASSWORD'] = 'sudo'
 app.config['MYSQL_DB'] = 'auth'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mysql = MySQL(app)
+#mysql = MySQL(app)
 
 # session key
 
@@ -36,20 +36,70 @@ def is_logged_in(f):
     return wrap
 
 # index route
-
-
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
+
+# index recipes
+@app.route('/recipes')
+def recipes():
+    return render_template('recipes.html')
+
+
+# index lunchbox
+@app.route('/lunchbox')
+def lunchbox():
+    return render_template('lunchbox.html')
+
+# index dinnershow
+@app.route('/dinnershow')
+def dinnershow():
+    return render_template('dinnershow.html')
+
+# index cookschool
+@app.route('/cookschool')
+def cookschool():
+    return render_template('cookschool.html')
+
+# index openhouse
+@app.route('/openhouse')
+def openhouse():
+    return render_template('openhouse.html')
+
+# index article
+@app.route('/article')
+def article():
+    return render_template('article.html')
+
+#usageclub
+@app.route('/usageclub')
+def usageclub():
+    return render_template('usageclub.html')
+
+#life changing route
+@app.route('/lifechanging')
+def lifechanging():
+    return render_template('lifechanging.html')
+
+#blog route
+@app.route('/blog')
+def blog():
+    return render_template('blog.html')
+
+#layout route
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
+
+
+
 
 # about route
-
-
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-
+'''
 # articles route
 @app.route('/articles')
 def articles():
@@ -297,7 +347,7 @@ def add_article():
         return redirect(url_for('dashboard'))
 
     return render_template('add_article.html', form=form)
-
+'''
 
 
 if __name__ == '__main__':

@@ -165,4 +165,7 @@ footer {
 }
 .major-body-content p {
 	font-size: 22px;
+} 
+.largepad {
+	padding: 50px 0; 
 }

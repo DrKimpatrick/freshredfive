@@ -2,12 +2,22 @@
 {% block title %} Blog {% endblock %}
 {% block body %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
+
+	 {% for article in articles %}
+	 {% if article.id == 4 %}
     <div class="jumbotron featuredarticle">
 		<div class="container">
-			<div class="blogheading">Title of featured Blog Article</div>
-			<div class="blogdescription">Short description: In porta, quam sit amet fringilla molestie, mi turpis molestie dui, vulputate ullamcorper sem nunc in justo. Sed tempor lectus ac justo lobortis a dictum odio malesuada. Praesent a odio sapien. Donec ut nisl mi, ut molestie leo. In at odio nisl, vel luctus elit. Quisque vel odio ut turpis adipiscing venenatis. ...</div>
-			<div class="blogdatetime">01 Jan 2018 14:00</div><br>
-			<a class="linkbutton" href="article.html">Read More</a>
+			<div class="blogheading">{{article.title}}</div>
+			<div class="blogdescription">
+
+      								<li class="list-group-item">{{article.body | safe}}</li>
+
+      								<div class="blogdatetime">Created on {{article.create_date}}</div><br>
+								<a class="linkbutton" href="article/{{article.id}}">Read More</a>
+								</div>
+	{% endif %}
+	{% endfor %}
+
 		</div>
     </div>
 
@@ -33,111 +43,33 @@
 				                <td>
 				                	<!-- Get all blog articles from db and loop through this entire section -->
 					    			<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Heading One</a></div>
+						    			<div class="blogheading">Articles created</div>
 						    			<div class="blogimage"><img src="static/images/carousel/2.jpeg" alt="Blog Image"></div>
-						    			<div class="blogdatetime">01 Jan 2018 18:30</div>
+						    			<!--<div class="blogdatetime"></div> -->
 						    			<hr>
+						    		{% for article in articles %}
 						    			<div class="blogdescription">
-						    				It has been said that astronomy is a humbling and character-building experience. There is perhaps no better demonstration of the folly of human conceits than this distant image of our tiny world. To me, it underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we've ever known.
-						    				<br><br>
-						    				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-											<br><br>
-											Aenean sagittis, ligula vitae semper gravida, elit justo pulvinar magna, in condimentum ipsum magna non diam. Quisque sodales, quam sed convallis scelerisque, erat metus ultricies diam, a varius nunc lectus id dolor. Duis sed magna accumsan augue ornare egestas a quis arcu.
+						    			  <ul class="list-group">
+
+
+      								<li class="list-group-item"><a href="article/{{article.id}}">{{article.title | safe}}</a></li>
+								    {% endfor %}
+									  </ul>
 						    			</div>
 						    		</div>
 				                </td>
 				            </tr>
 
-				            <!-- These rows are added just as a sample. Loop should only have one row -->
-				            <tr>
-				                <td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Title of Article Two</a></div>
-						    			<div class="blogimage"><img src="static/images/carousel/3.jpeg" alt="Blog Image"></div>
-						    			<div class="blogdatetime">11 Feb 2018 18:30</div>
-						    			<hr>
-						    			<div class="blogdescription">
-						    				It has been said that astronomy is a humbling and character-building experience. There is perhaps no better demonstration of the folly of human conceits than this distant image of our tiny world. To me, it underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we've ever known.
-						    				<br><br>
-						    				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-											<br><br>
-											Aenean sagittis, ligula vitae semper gravida, elit justo pulvinar magna, in condimentum ipsum magna non diam. Quisque sodales, quam sed convallis scelerisque, erat metus ultricies diam, a varius nunc lectus id dolor. Duis sed magna accumsan augue ornare egestas a quis arcu.
-						    			</div>
-						    		</div>
-				                </td>
-				            </tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Three</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">
-						    				<strong>I've added lots of examples so you can test pagination (Page 1,2... Prev, Next) as well as The Search Bar on top</strong>
-						    			</div>
-						    		</div>
 				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Four</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Five</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Six</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Seven</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eight</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Nine</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Ten</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eleven</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
+
+					<!--
 				            <tr><td>
 				                	<div class="single-article-instance">
 						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Twelve</a></div>
 						    			<div class="blogdatetime">Date</div> <hr>
 						    			<div class="blogdescription">Sample Description</div>
 						    		</div>
-				            </td></tr>
+				            </td></tr> -->
 				        </tbody>
 				    </table>
 
@@ -156,56 +88,28 @@
 	    				<h5>Recent Articles</h5>
 
 	    				<!-- GET LATEST 3 BLOG POSTS FROM DATABASE AND LOOP THIS ENTIRE SECTION -->
-						<div class="recentarticleinstance">
-							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161dc935955%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161dc935955%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7265625%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-								<div class="card-body">
-									<h5>Title Sample 1</h5>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa dui, venenatis ac semper sed, pellentesque eget mi.</p>
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-										</div>
-										<small class="text-muted">11 Feb 2018</small>
-									</div>
-								</div>
-							</div>
-						</div>
+	    				{% for article in articles %}
+	    				{% if article.id > 5 and article.id != 7 %}
 
 						<div class="recentarticleinstance">
 							<div class="card mb-4 box-shadow">
 								<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161dc935955%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161dc935955%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7265625%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
 								<div class="card-body">
-									<h5>Title Sample 2</h5>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa dui, venenatis ac semper sed, pellentesque eget mi.</p>
+									<h5><a href="article/{{article.id}}">{{article.title | safe}}</h5>
+									<!--<p class="card-text">{{article.body | safe}}</p>-->
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
 											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 										</div>
-										<small class="text-muted">11 Feb 2018</small>
-									</div>
-								</div>
-							</div>
-						</div>
 
-						<div class="recentarticleinstance">
-							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161dc935955%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161dc935955%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7265625%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
-								<div class="card-body">
-									<h5>Title Sample 3</h5>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi massa dui, venenatis ac semper sed, pellentesque eget mi.</p>
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-											<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-										</div>
-										<small class="text-muted">11 Feb 2018</small>
+
 									</div>
 								</div>
 							</div>
 						</div>
+						{% endif %}
+						{% endfor %}
+
 
 	    			</div>
 	    		</div>

@@ -5,8 +5,8 @@
     <div class="jumbotron featuredarticle">
 		<div class="container">
 			<small><i>Show full article on this page</i></small>
-			<div class="blogheading">Title of <u>selected</u> Blog Article</div>
-			<div class="blogdatetime">Posted: 01 Jan 2018 14:00</div>
+			<div class="blogheading">{{ article.title}}</div>
+			<div class="blogdatetime">Posted: {{ article.create_date}}</div>
 		</div>
     </div>
 
@@ -18,25 +18,9 @@
     				<div class="single-article-instance">
 		    			<div class="blogimage"><img src="static/images/carousel/2.jpeg" alt="Blog Image"></div>
 		    			<div class="blogdescription">
-		    				Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives. The aggregate of our joy and suffering, thousands of confident religions, ideologies, and economic doctrines, every hunter and forager, every hero and coward, every creator and destroyer of civilization, every king and peasant, every young couple in love, every mother and father, hopeful child, inventor and explorer, every teacher of morals, every corrupt politician, every "superstar," every "supreme leader," every saint and sinner in the history of our species lived there--on a mote of dust suspended in a sunbeam.
-							<br><br>
-							The Earth is a very small stage in a vast cosmic arena. Think of the rivers of blood spilled by all those generals and emperors so that, in glory and triumph, they could become the momentary masters of a fraction of a dot. Think of the endless cruelties visited by the inhabitants of one corner of this pixel on the scarcely distinguishable inhabitants of some other corner, how frequent their misunderstandings, how eager they are to kill one another, how fervent their hatreds.
-							<br><br>
-							Our posturings, our imagined self-importance, the delusion that we have some privileged position in the Universe, are challenged by this point of pale light. Our planet is a lonely speck in the great enveloping cosmic dark. In our obscurity, in all this vastness, there is no hint that help will come from elsewhere to save us from ourselves.
-							<br><br>
-							The Earth is the only world known so far to harbor life. There is nowhere else, at least in the near future, to which our species could migrate. Visit, yes. Settle, not yet. Like it or not, for the moment the Earth is where we make our stand.
-							<br><br>
-							It has been said that astronomy is a humbling and character-building experience. There is perhaps no better demonstration of the folly of human conceits than this distant image of our tiny world. To me, it underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we've ever known.
-							<br><br>
-							<i>-- Carl Sagan, Pale Blue Dot, 1994</i>
-		    				<br><br>
-		    				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-							<br><br>
-							Aenean sagittis, ligula vitae semper gravida, elit justo pulvinar magna, in condimentum ipsum magna non diam. Quisque sodales, quam sed convallis scelerisque, erat metus ultricies diam, a varius nunc lectus id dolor. Duis sed magna accumsan augue ornare egestas a quis arcu.
-		    				<br><br>
-		    				Maecenas a neque purus, sed vehicula justo. Donec sit amet elit eget nunc porta aliquet vel et libero. Cras ut sem sem.
-							<br><br>
-							In porta, quam sit amet fringilla molestie, mi turpis molestie dui, vulputate ullamcorper sem nunc in justo. Sed tempor lectus ac justo lobortis a dictum odio malesuada. Praesent a odio sapien. Donec ut nisl mi, ut molestie leo. In at odio nisl, vel luctus elit. Quisque vel odio ut turpis adipiscing venenatis.
+		    				<h1></h1>
+		    				<small>Written by {{article.author}} </small>
+		    				{{ article.body | safe}}
 		    			</div>
 		    		</div>
 	    		</div>

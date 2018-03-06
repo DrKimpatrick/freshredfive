@@ -9,8 +9,6 @@ from functools import wraps
 from flask_sqlalchemy import SQLAlchemy
 
 
-
-
 app = Flask(__name__)
 #Articles = Articles()
 
@@ -49,6 +47,8 @@ def index():
     return render_template('index.html')
 
 # index recipes
+
+
 @app.route('/recipes')
 def recipes():
     return render_template('recipes.html')
@@ -60,19 +60,27 @@ def lunchbox():
     return render_template('lunchbox.html')
 
 # index dinnershow
+
+
 @app.route('/dinnershow')
 def dinnershow():
     return render_template('dinnershow.html')
 
 # index cookschool
+
+
 @app.route('/cookschool')
 def cookschool():
     return render_template('cookschool.html')
 
 # index openhouse
+
+
 @app.route('/openhouse')
 def openhouse():
     return render_template('openhouse.html')
+
+
 '''
 # index article
 @app.route('/article')
@@ -80,22 +88,24 @@ def article():
     return render_template('article.html')
 '''
 
-#usageclub
+# usageclub
+
+
 @app.route('/usageclub')
 def usageclub():
     return render_template('usageclub.html')
 
-#life changing route
+# life changing route
+
+
 @app.route('/lifechanging')
 def lifechanging():
     return render_template('lifechanging.html')
 
-#blog route
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
 
-#layout route
+# layout route
+
+
 @app.route('/layout')
 def layout():
     return render_template('layout.html')
@@ -106,7 +116,9 @@ def layout():
 def about():
     return render_template('about.html')
 
-#creating forms
+# creating forms
+
+'''
 class RegisterForm(Form):
     name = StringField('Name', validators=[
                        DataRequired(), validators.Length(min=4, max=25)])
@@ -118,7 +130,7 @@ class RegisterForm(Form):
                                                      validators.Length(min=6, max=25), validators.EqualTo('confirm',
                                                                                                           message='Passwords must match')])
     confirm = PasswordField('Confirm Password')
-
+'''
 
 
 # login route
@@ -127,15 +139,15 @@ def login():
     if request.method == 'POST':
         # get form fields user name and password
         username = request.form['username']
-        session['logged_in']=True
+        session['logged_in'] = True
         session['username'] = request.form['username']
-        #print(session['username'])
+        # print(session['username'])
         password_candidate = request.form['password']
-        #print(username)
-        #print(password_candidate)
+        # print(username)
+        # print(password_candidate)
 
-        #hard coded username and password
-        if username == 'Admin' and password_candidate == "Admin1234" :
+        # hard coded username and password
+        if username == 'Admin' and password_candidate == "Admin1234":
             flash('You are now logged in', 'success')
             return redirect(url_for('dashboard'))
         else:
@@ -143,8 +155,6 @@ def login():
             return render_template('login.html', error=error)
 
     return render_template('login.html')
-
-
 
 
 # dashboard
@@ -167,7 +177,7 @@ def dashboard():
     cur.close()
 
 
-#creating articles form
+# creating articles form
 class ArticleForm(Form):
     title = StringField('Name', validators=[
                         DataRequired(), validators.Length(min=4, max=250)])
@@ -175,27 +185,24 @@ class ArticleForm(Form):
                          DataRequired(), validators.Length(min=30)])
 
 
-
-
-#edit article
+# edit article
 @app.route('/edit_article/<string:id>', methods=["GET", "POST"])
 #@is_logged_in
 def edit_article(id):
-    #create cursor
+    # create cursor
     cur = mysql.connection.cursor()
 
-    #get article by id
+    # get article by id
     result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
     article = cur.fetchone()
 
-    #get the form
+    # get the form
     form = ArticleForm(request.form)
 
     form.title.data = article['title']
     form.body.data = article['body']
 
-    #fill the form of the fields
-
+    # fill the form of the fields
 
     if request.method == "POST" and form.validate():
         title = request.form['title']
@@ -205,8 +212,8 @@ def edit_article(id):
         cur = mysql.connection.cursor()
 
         # execute
-        cur.execute("UPDATE  articles SET title=%s,body=%s WHERE id=%s",(title,body,id))
-
+        cur.execute(
+            "UPDATE  articles SET title=%s,body=%s WHERE id=%s", (title, body, id))
 
         # commit to db
         mysql.connection.commit()
@@ -219,15 +226,17 @@ def edit_article(id):
 
     return render_template('edit_article.html', form=form)
 
-#delete articles
-@app.route('/delete_article/<string:id>', methods=['GET','POST'])
+# delete articles
+
+
+@app.route('/delete_article/<string:id>', methods=['GET', 'POST'])
 #@is_logged_in
 def delete_article(id):
-    #create db cursor
+    # create db cursor
     cur = mysql.connection.cursor()
 
-    #Execute
-    cur.execute("DELETE FROM articles WHERE id=%s",[id])
+    # Execute
+    cur.execute("DELETE FROM articles WHERE id=%s", [id])
 
     # commit to db
     mysql.connection.commit()
@@ -239,9 +248,8 @@ def delete_article(id):
     return redirect(url_for('dashboard'))
 
 
-
 @app.route('/add_article', methods=["GET", "POST"])
-#@is_logged_in
+@is_logged_in
 def add_article():
     form = ArticleForm(request.form)
 
@@ -267,7 +275,31 @@ def add_article():
 
     return render_template('add_article.html', form=form)
 
+
+# blog route
+
+@app.route('/blog')
+def blog():
+    # create cursor
+    cur = mysql.connection.cursor()
+
+    # get articles
+    result = cur.execute("SELECT * FROM articles")
+    articles = cur.fetchall()
+    if result > 0:
+        return render_template('blog.html', articles=articles)
+
+    else:
+        msg = "No articles where found"
+        return render_template('articles.html', msg)
+
+    cur.close()
+
+    return render_template('blog.html')
+
+
 # articles route
+
 @app.route('/articles')
 def articles():
 
@@ -286,20 +318,24 @@ def articles():
 
     cur.close()
 
-    #return render_template('articles.html',articles=Articles)
+    # return render_template('articles.html',articles=Articles)
 
 
-#article route
+# article route
 @app.route('/article/<string:id>/')
 def article(id):
     cur = mysql.connection.cursor()
 
     # get articles
     result = cur.execute("SELECT * FROM articles WHERE  id = %s", [id])
-    articles = cur.fetchone()
-    return render_template('page.html', articles=articles)
-    cur.close()
 
+    if result > 0:
+        article = cur.fetchone()
+        return render_template('article.html', article=article)
+        cur.close()
+    else:
+        flash("You the article doesn't exit")
+        return redirect(url_for('dashboard'))
 
 
 # about log out
@@ -309,7 +345,6 @@ def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('index'))
-
 
 
 '''

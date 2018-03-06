@@ -6,7 +6,7 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
 
 
 
@@ -16,13 +16,14 @@ app = Flask(__name__)
 
 # config mysql
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app) 
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'chuck'
 app.config['MYSQL_PASSWORD'] = 'sudo'
 app.config['MYSQL_DB'] = 'auth'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
 
 mysql = MySQL(app)
 

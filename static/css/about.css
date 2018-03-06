@@ -3,19 +3,26 @@
 	text-align: justify;
     text-justify: inter-word;
  }
- .withbackground {
+ .withbackground { 
  	background-color: #F7F3E2;
  }
  .member-entity {
- 	padding: 5px 20px 5px 5px;
+ 	padding: 5px;
  	border: 1px solid #eaeaea;
  	border-radius: 5px;
+ 	min-height: 230px;
  }
  .member-entity img {
- 	width: 100%;
+ 	float: left;
+ 	height: 220px;
+ 	width: auto;
  	border: 1px solid #eaeaea;
  	padding: 5px;
+ 	margin: 0 10px 10px 0;
  }
  .members .row {
  	margin-bottom: 30px;
+ }
+ .member-details {
+ 	margin: 75px 10px 10px 10px;
  }

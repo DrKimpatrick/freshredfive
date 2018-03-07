@@ -25,8 +25,8 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='',
-    MAIL_PASSWORD=''
+    MAIL_USERNAME='fivered24',
+    MAIL_PASSWORD='fivered#@'
 )
 
 mail = Mail(app)
@@ -63,8 +63,8 @@ def is_logged_in(f):
 def sendmail():
     try:
         msg = Message("Trying out the send mail for red5",
-                      sender="",
-                      recipients=['', ''])
+                      sender="fivered24@gmail",
+                      recipients=['bozicslxye1@gmail.com', 'sekitocharlse@gmail.com'])
         msg.body = "Yo!\n  The mail feature is still being worked on"
         msg.html = " <P> "
         return 'Mail sent'

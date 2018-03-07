@@ -79,19 +79,83 @@
         </div>
     </nav>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
-   {% block body %}{% endblock %}
+    {% if error %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% endif %}
 
-      {% block footer %}
-          <!-- Footer section -->
+    {% if msg %}
+    <div class="alert alert-success">{{msg}}</div>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+
+    {% block footer %}
+    <!-- Footer section -->
     <div class="maroonsection bottomlinkssection">
         <div class="row">
             <div class="col-sm-2">
                 <div class="saladmasterad">
                     <!--<a href="#" target="_blank">-->
                         <img src="static/images/saladmaster.png" alt="saladmaster logo">
-                    <!--</a>-->
+                        <!--</a>-->
+                    </div>
                 </div>
+                <div class="col-sm-2">
+                    <h5>SERVICE HOURS</h5>
+                    <hr style="color: white;">
+                    8:00 A.M - 5:00 P.M<br>
+                    Monday - Friday<br>
+                    Excluding Holidays<br>
+                    <a href="tel:+256781889900">+256-781-889900</a><br><br>
+                    <a href="#" target="_blank" style="margin-right: 20px; font-size: 25px">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" target="_blank" style="margin-right: 20px; font-size: 25px">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" target="_blank" style="font-size: 25px">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    <h5>ABOUT RED5</h5>
+                    <hr style="color: white">
+                    <div><a href={{url_for('about')}}#overview>COMPANY OVERVIEW</a></div>
+                    <div><a href={{url_for('about')}}#history>STORY OF RED5</a></div>
+                    <div><a href={{url_for('about')}}#social>SOCIAL AGENDA</a></div>
+                    <div><a href={{url_for('about')}}#economic>ECONOMIC AGENDA</a></div>
+                    <div><a href={{url_for('about')}}#members>TEAM MEMBERS</a></div>
+                </div>
+                <div class="col-sm-2">
+                    <h5>COOK MORE</h5>
+                    <hr style="color: white">
+                    <div><a href={{ url_for('blog')}}>HEALTH BLOG</a></div>
+                    <div><a href={{ url_for('recipes')}}>RECIPIES</a></div>
+                    <div><a href={{ url_for('usageclub')}}>USAGE CLUB</a></div>
+                    <div><a href={{ url_for('cookschool')}}>COOK SCHOOL</a></div>
+                </div>
+                <div class="col-sm-2">
+                    <h5>START A BUSINESS</h5>
+                    <hr style="color: white">
+                    <div><a href={{url_for("lifechanging")}}>LIFE CHANGING EVENT</a></div>
+                    <div><a href={{url_for("openhouse")}}>OPEN HOUSE</a></div>
+                </div>
+                <div class="col-sm-2">
+                    <h5>MORE</h5>
+                    <hr style="color: white">
+                    <div><a href={{url_for("dinnershow")}}>DINNER SHOW</a></div>
+                    <div><a href={{url_for("lunchbox") }}>LUNCH BOX</a></div>
+                    <div><a href={{ url_for("blog")}}>BLOG</a></div>
+                </div>
+
             </div>
             <div class="col-sm-2">
                 <h5>SERVICE HOURS</h5>
@@ -139,35 +203,42 @@
                 <div><a href={{url_for("dinnershow")}}>DINNER SHOW</a></div>
                 <div><a href={{url_for("lunchbox") }}>LUNCH BOX</a></div>
                 <!-- <div><a href={{ url_for("blog")}}>BLOG</a></div> -->
+
             </div>
         </div>
-    </div>
 
-    <footer>
-        © 2018 EatForLife
-    </footer>
-
-    <!-- for Boostrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- For Datatables: To have proper search and pagination for BLOG ARTICLES -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#example').DataTable({
-                "ordering": false
-            });
-        } );
-    </script>
 
     <!-- cook school script -->
     <!-- FOR THE GALLERY -->
     <script>
         $(document).ready(function() {
+
+        <footer>
+            © 2018 EatForLife
+        </footer>
+
+        <!-- for Boostrap -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- For Datatables: To have proper search and pagination for BLOG ARTICLES -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#example').DataTable({
+                    "ordering": false
+                });
+            } );
+        </script>
+
+        <!-- cook school script -->
+        <!-- FOR THE GALLERY -->
+        <script>
+            $(document).ready(function() {
+
             // Gets the video src from the data-src on each button
             var $imageSrc;
             $('.gallery img').click(function() {
@@ -188,7 +259,7 @@
             })
         });
     </script>
-{% endblock %}
+    {% endblock %}
 
 
 </body>

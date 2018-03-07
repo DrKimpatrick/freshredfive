@@ -5,8 +5,8 @@
     <div class="jumbotron featuredarticle">
 		<div class="container">
 			<small><i>Show full article on this page</i></small>
-			<div class="blogheading">{{ article.title}}</div>
-			<div class="blogdatetime">Posted: {{ article.create_date}}</div>
+			<div class="blogheading">{{article.title}}</div>
+			<div class="blogdatetime">Posted:{{article.create_date}}</div>
 		</div>
     </div>
 
@@ -18,9 +18,7 @@
     				<div class="single-article-instance">
 		    			<div class="blogimage"><img src="static/images/carousel/2.jpeg" alt="Blog Image"></div>
 		    			<div class="blogdescription">
-		    				<h1></h1>
-		    				<small>Written by {{article.author}} </small>
-		    				{{ article.body | safe}}
+		    				{article.body | safe }
 		    			</div>
 		    		</div>
 	    		</div>
@@ -94,6 +92,5 @@
 	    	</div>
     	</div>
     </div>
-
 
 {% endblock %}

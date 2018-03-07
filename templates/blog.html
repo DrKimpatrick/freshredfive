@@ -2,22 +2,12 @@
 {% block title %} Blog {% endblock %}
 {% block body %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
-
-	 {% for article in articles %}
-	 {% if article.id == 4 %}
     <div class="jumbotron featuredarticle">
 		<div class="container">
-			<div class="blogheading">{{article.title}}</div>
-			<div class="blogdescription">
-
-      								<li class="list-group-item">{{article.body | safe}}</li>
-
-      								<div class="blogdatetime">Created on {{article.create_date}}</div><br>
-								<a class="linkbutton" href="article/{{article.id}}">Read More</a>
-								</div>
-	{% endif %}
-	{% endfor %}
-
+			<div class="blogheading">{{random_article.title}}</div>
+			<div class="blogdescription">{{random_article.body | safe}}</div>
+			<div class="blogdatetime">Created on {{random_article.create_date}}</div><br>
+			<a class="linkbutton" href="article.html">Read More</a>
 		</div>
     </div>
 
@@ -39,37 +29,98 @@
 				            </tr>
 				        </tfoot>
 				        <tbody>
+
+				            <!-- These rows are added just as a sample. Loop should only have one row -->
+				            {% for article in articles %}
 				            <tr>
 				                <td>
-				                	<!-- Get all blog articles from db and loop through this entire section -->
-					    			<div class="single-article-instance">
-						    			<div class="blogheading">Articles created</div>
-						    			<div class="blogimage"><img src="static/images/carousel/2.jpeg" alt="Blog Image"></div>
-						    			<!--<div class="blogdatetime"></div> -->
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"> {{article.title}} </div>
+						    			<div class="blogimage"><img src="static/images/carousel/3.jpeg" alt="Blog Image"></div>
+						    			<div class="blogdatetime">{{article.create_date}}</div>
 						    			<hr>
-						    		{% for article in articles %}
 						    			<div class="blogdescription">
-						    			  <ul class="list-group">
+						    			{{article.body | safe |truncate }}  <br>
 
-
-      								<li class="list-group-item"><a href="article/{{article.id}}">{{article.body | safe}}</a></li>
-								    {% endfor %}
-									  </ul>
 						    			</div>
+						    			<a class="linkbutton" href="article.html">Read More</a>
 						    		</div>
 				                </td>
 				            </tr>
-
+				            {% endfor %}
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Three</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">
+						    				<strong>I've added lots of examples so you can test pagination (Page 1,2... Prev, Next) as well as The Search Bar on top</strong>
+						    			</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Four</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
 				            </td></tr>
 
-					<!--
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Five</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Six</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Seven</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eight</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Nine</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Ten</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
+				            <tr><td>
+				                	<div class="single-article-instance">
+						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eleven</a></div>
+						    			<div class="blogdatetime">Date</div> <hr>
+						    			<div class="blogdescription">Sample Description</div>
+						    		</div>
+				            </td></tr>
 				            <tr><td>
 				                	<div class="single-article-instance">
 						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Twelve</a></div>
 						    			<div class="blogdatetime">Date</div> <hr>
 						    			<div class="blogdescription">Sample Description</div>
 						    		</div>
-				            </td></tr> -->
+				            </td></tr>
 				        </tbody>
 				    </table>
 
@@ -85,31 +136,27 @@
 	    				<a title="Youtube" style="color: red" href="#" target="_blank"><i class="fab fa-youtube"></i></a>
 	    			</div>
 	    			<div class="p-3 mb-3 bg-light rounded recentarticles">
-	    				<h5>Recent Articles</h5>
+	    				<h5>Previous Articles</h5>
 
 	    				<!-- GET LATEST 3 BLOG POSTS FROM DATABASE AND LOOP THIS ENTIRE SECTION -->
-	    				{% for article in articles %}
-	    				{% if article.id > 5 and article.id != 7 %}
-
+	    				{% for new in newest%}
 						<div class="recentarticleinstance">
 							<div class="card mb-4 box-shadow">
 								<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_161dc935955%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_161dc935955%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7265625%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
 								<div class="card-body">
-									<h5><a href="article/{{article.id}}">{{article.title | safe}}</h5>
-									<!--<p class="card-text">{{article.body | safe}}</p>-->
+									<h5>{{new.title}}</h5>
+									<p class="card-text">{{new.body |safe |truncate }}
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+											<button type="button" class="btn btn-sm btn-outline-secondary">Read more</button>
+
 										</div>
-
-
+										<small class="text-muted">{{new.create_date }}</small>
 									</div>
 								</div>
 							</div>
 						</div>
-						{% endif %}
 						{% endfor %}
-
 
 	    			</div>
 	    		</div>

@@ -165,4 +165,26 @@ footer {
 }
 .major-body-content p {
 	font-size: 22px;
+} 
+.largepad {
+	padding: 50px 0; 
+}
+.left {
+	text-align: left;
+}
+.greycontainer .row {
+	margin: 0 !important;
+}
+.whitecontainer .row {
+	margin: 0 !important;
+}
+.recipe-image {
+	width: 100%;
+}
+.recipe-details {
+	padding: 20px 30px !important;
+}
+.recipe-title {
+	font-size: 55px;
+	margin-bottom: 30px;
 }

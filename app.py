@@ -13,10 +13,10 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 #db = SQLAlchemy(app)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'chuck'
-app.config['MYSQL_PASSWORD'] = 'sudo'
-app.config['MYSQL_DB'] = 'auth'
+app.config['MYSQL_HOST'] = 'us-cdbr-iron-east-05.cleardb.net'
+app.config['MYSQL_USER'] = 'b12ca07045f6b4'
+app.config['MYSQL_PASSWORD'] = 'ecd9bf61'
+app.config['MYSQL_DB'] = 'heroku_fac9af395886b6b'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 

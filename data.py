@@ -1,56 +1,32 @@
-'''def Articles():
-    articles = [
-    {
-        'id':1,
-        'title':'Article 1',
-        'body':'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, blanditiis sed molestias illo rerum hic ad ullam, excepturi quasi cupiditate vel! Incidunt illo consectetur fugit repudiandae, et a perferendis magnam.',
-        'author':'chucky',
-        'create_date':'20-11-2017'
-    },
-    {
-        'id':2,
-        'title':'Article 2',
-        'body':'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, blanditiis sed molestias illo rerum hic ad ullam, excepturi quasi cupiditate vel! Incidunt illo consectetur fugit repudiandae, et a perferendis magnam.',
-        'author':'Bozics',
-        'create_date':'21-11-2017'
-    },
-    {
-        'id':3,
-        'title':'Article 3',
-        'body':'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, blanditiis sed molestias illo rerum hic ad ullam, excepturi quasi cupiditate vel! Incidunt illo consectetur fugit repudiandae, et a perferendis magnam.',
-        'author':'Mobby',
-        'create_date':'24-11-2017'
-    }
-
-    ]
-
-    return articles
-
-'''
-from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+from datetime import datetime
 app = Flask(__name__)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@localhost/db_name'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://b12ca07045f6b4:ecd9bf61@us-cdbr-iron-east-05.cleardb.net/heroku_fac9af395886b6b'
 db = SQLAlchemy(app)
 
+# class for the database model of the app
 
-class User(db.Model):
+
+class Articles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    email = db.Column(db.String(120), unique=True)
-
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    title = db.Column(db.String(80), unique=True, nullable=False)
+    author = db.Column(db.String(80))
+    body = db.Column(db.Text, nullable=False)
+    create_date = db.Column(db.DateTime, nullable=False,
+                            default=datetime.utcnow)
 
     def __repr__(self):
         return '<User %r>' % self.username
 
-admin = User('admin', 'admin@example.com')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+article1 = Articles(title='How red 5 was founded',
+                    author='chucky', body="Danston Mugarura a global business expert of Ugandan – British descent\
+                    He is an accomplished serial entrepreneur and a self-made millionaire.He founded Red Five ")
 
+
+# db.session.add(article1)
+db.session.add(article1)
+db.session.commit()

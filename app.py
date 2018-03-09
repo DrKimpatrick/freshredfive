@@ -103,11 +103,12 @@ def blog():
     result = cur.execute("SELECT * FROM articles ORDER BY create_date DESC")
 
     articles = cur.fetchall()
+    article1 = cur.fetchone()
     random_article = random.choice(articles)
     newest = reversed(articles)
 
     if result > 0:
-        return render_template('blog.html', articles=articles, random_article=random_article, newest=newest)
+        return render_template('blog.html', articles=articles, random_article=random_article, newest=newest,article1=article1)
 
     else:
         msg = "No articles where found"
@@ -307,7 +308,7 @@ def article(id):
         return render_template('article.html', article=article)
         cur.close()
     else:
-        flash("You the article doesn't exit")
+        flash("The article doesn't exit")
         return redirect(url_for('index'))
 
 # about log out
@@ -319,6 +320,7 @@ def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('index'))
+    
 
 
 if __name__ == '__main__':

@@ -4,7 +4,6 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron featuredarticle">
 		<div class="container">
-			<small><i>Show full article on this page</i></small>
 			<div class="blogheading">{{article.title}}</div>
 			<div class="blogdatetime">Posted:{{article.create_date}}</div>
 		</div>
@@ -16,9 +15,9 @@
     			<!-- Selected Article -->
     			<div class="col-sm-8 allarticles">
     				<div class="single-article-instance">
-		    			<div class="blogimage"><img src="static/images/carousel/2.jpeg" alt="Blog Image"></div>
+		    			<div class="blogimage"><img src={{ url_for('static', filename='img/carousel/2.jpeg') }} alt="Blog Image"></div>
 		    			<div class="blogdescription">
-		    				{article.body | safe }
+		    				{{article.body | safe }}
 		    			</div>
 		    		</div>
 	    		</div>

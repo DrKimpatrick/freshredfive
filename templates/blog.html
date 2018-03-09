@@ -7,7 +7,7 @@
 			<div class="blogheading">{{random_article.title}}</div>
 			<div class="blogdescription">{{random_article.body | safe}}</div>
 			<div class="blogdatetime">Created on {{random_article.create_date}}</div><br>
-			<a class="linkbutton" href="article.html">Read More</a>
+			<a class="linkbutton" href="article1/{{article1.id}}">Read More</a>
 		</div>
     </div>
 
@@ -43,7 +43,7 @@
 						    			{{article.body | safe |truncate }}  <br>
 
 						    			</div>
-						    			<a class="linkbutton" href="article.html">Read More</a>
+						    			<a class="linkbutton"  href="article/{{article.id}}">Read More</a>
 						    		</div>
 				                </td>
 				            </tr>

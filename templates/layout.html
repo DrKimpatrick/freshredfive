@@ -57,7 +57,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="cookmore.html" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">COOK MORE</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href={{ url_for("blog")}}>HEALTH BLOG</a>
+                            <!-- <a class="dropdown-item" href={{ url_for("blog")}}>HEALTH BLOG</a> -->
                             <a class="dropdown-item" href={{ url_for("recipes")}}>RECIPIES</a>
                             <a class="dropdown-item" href={{ url_for("usageclub")}}>USAGE CLUB</a>
                             <a class="dropdown-item" href={{ url_for("cookschool")}}>COOK SCHOOL</a>
@@ -71,11 +71,11 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href= {{ url_for("lunchbox")}}>LUNCH BOX</a>
+                        <a style="color: #ccc !important;" class="nav-link" href= {{ url_for("lunchbox")}}>LUNCH BOX</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href={{ url_for("blog")}}>BLOG</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ url_for("blog")}}>HEALTH BLOG</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -98,6 +98,9 @@
             <div class="col-sm-2">
                 <h5>SERVICE HOURS</h5>
                 <hr style="color: white;">
+                Kalungi Road, <br>
+                Plot 6284, Muyenga, <br>
+                Kampala, Uganda.<br>
                 9:00 A.M - 5:00 P.M<br>
                 Monday - Friday<br>
                 Excluding Holidays<br>
@@ -175,7 +178,7 @@
             $('.gallery img').click(function() {
                 $imageSrc = $(this).data('bigimage');
             });
-            console.log($imageSrc);
+            // console.log($imageSrc);
 
             // when the modal is opened autoplay it
             $('#myModal').on('shown.bs.modal', function (e) {

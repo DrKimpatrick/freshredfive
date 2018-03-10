@@ -188,3 +188,16 @@ footer {
 	font-size: 55px;
 	margin-bottom: 30px;
 }
+.greytopcover {
+	position: fixed;
+	top: 55px; /*for nav*/
+	height: 100%; 
+	width: 100%;
+	z-index: 10 !important;
+	opacity: 0.5;
+	background-color: #000;
+	display: block!important;
+}
+small {
+	color: #670101;
+}

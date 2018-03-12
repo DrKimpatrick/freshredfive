@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, flash, redirect, url_for, session, request
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
@@ -93,14 +92,13 @@ def lifechanging():
 
 # blog route
 
-
 @app.route('/blog')
 def blog():
     # create cursor
     cur = mysql.connection.cursor()
 
     # get articles
-    result = cur.execute("SELECT * FROM articles ORDER BY create_date ASC")
+    result = cur.execute("SELECT * FROM articles ORDER BY create_date DESC")
 
     articles = cur.fetchall()
     article1 = cur.fetchone()
@@ -108,7 +106,7 @@ def blog():
     newest = reversed(articles)
 
     if result > 0:
-        return render_template('blog.html', articles=articles, article=random_article, newest=newest,article1=article1)
+        return render_template('blog.html', articles=articles, article=random_article, newest=newest, article1=article1)
 
     else:
         msg = "No articles where found"
@@ -244,7 +242,7 @@ def delete_article(id):
 
 
 @app.route('/add_article', methods=["GET", "POST"])
-#@is_logged_in
+@is_logged_in
 def add_article():
     form = ArticleForm(request.form)
 
@@ -275,7 +273,6 @@ def add_article():
 
 @app.route('/articles')
 def articles():
-
     # create cursor
     cur = mysql.connection.cursor()
 
@@ -320,7 +317,6 @@ def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('index'))
-    
 
 
 if __name__ == '__main__':

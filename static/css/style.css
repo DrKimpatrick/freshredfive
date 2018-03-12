@@ -201,3 +201,10 @@ footer {
 small {
 	color: #670101;
 }
+.cookschoolform label {
+	margin-bottom: 25px !important;
+}
+.teamimage img {
+	width: 100%;
+	height: auto;
+}

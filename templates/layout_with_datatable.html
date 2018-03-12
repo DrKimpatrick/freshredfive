@@ -157,28 +157,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <!-- FOR THE GALLERY -->
-    <script>
+    <!-- For Datatables: To have proper search and pagination for BLOG ARTICLES -->
+    <!-- NOTE: This JS code clashes with the gallery JS code. 
+        They must not both be included in the same HTML file -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            // Gets the video src from the data-src on each button
-            var $imageSrc;
-            $('.gallery img').click(function() {
-                $imageSrc = $(this).data('bigimage');
+            $('#example').DataTable({
+                "ordering": false
             });
-            // console.log($imageSrc);
-
-            // when the modal is opened autoplay it
-            $('#myModal').on('shown.bs.modal', function (e) {
-                // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-                $("#image").attr('src', $imageSrc);
-            })
-
-            // reset the modal image
-            $('#myModal').on('hide.bs.modal', function (e) {
-                // a poor man's stop video
-                $("#image").attr('src','');
-            })
-        });
+        } );
     </script>
 {% endblock %}
 

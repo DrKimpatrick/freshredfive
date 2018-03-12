@@ -100,7 +100,7 @@ def blog():
     cur = mysql.connection.cursor()
 
     # get articles
-    result = cur.execute("SELECT * FROM articles ORDER BY create_date DESC")
+    result = cur.execute("SELECT * FROM articles ORDER BY create_date ASC")
 
     articles = cur.fetchall()
     article1 = cur.fetchone()
@@ -108,7 +108,7 @@ def blog():
     newest = reversed(articles)
 
     if result > 0:
-        return render_template('blog.html', articles=articles, random_article=random_article, newest=newest,article1=article1)
+        return render_template('blog.html', articles=articles, article=random_article, newest=newest,article1=article1)
 
     else:
         msg = "No articles where found"

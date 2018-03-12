@@ -4,9 +4,9 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron featuredarticle">
 		<div class="container">
-			<div class="blogheading">{{random_article.title}}</div>
-			<div class="blogdescription">{{random_article.body | safe}}</div>
-			<div class="blogdatetime">Created on {{random_article.create_date}}</div><br>
+			<div class="blogheading">{{article.title}}</div>
+			<div class="blogdescription">{{article.body | safe | truncate}}</div>
+			<div class="blogdatetime">Created on {{article.create_date}}</div><br>
 			<a class="linkbutton" href="article/{{article.id}}">Read More</a>
 		</div>
     </div>

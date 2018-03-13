@@ -49,11 +49,6 @@ def index():
 @app.route('/recipes')
 def recipes():
     return render_template('recipes.html')
-#render the form
-@app.route('/form')
-def form():
-    return render_template('form.html')
-
 
 # index lunchbox
 @app.route('/lunchbox')
@@ -178,7 +173,8 @@ class ArticleForm(Form):
     title = StringField('Title', validators=[
                         DataRequired(), validators.Length(min=4, max=250)])
 
-
+    image = StringField('Image', validators=[
+                        DataRequired(), validators.Length(min=4, max=250)])
 
     body = TextAreaField('Body', validators=[
                          DataRequired(), validators.Length(min=30)])
@@ -200,12 +196,14 @@ def edit_article(id):
 
     form.title.data = article['title']
     form.body.data = article['body']
+    form.image.data = article['images']
 
     # fill the form of the fields
 
     if request.method == "POST" and form.validate():
         title = request.form['title']
         body = request.form['body']
+        image = request.form['image']
 
         # create cursor to the db
         cur = mysql.connection.cursor()
@@ -255,13 +253,14 @@ def add_article():
     if request.method == "POST" and form.validate():
         title = form.title.data
         body = form.body.data
-
+        image = form.image.data
+        #print(image)
         # create cursor to the db
         cur = mysql.connection.cursor()
 
         # execute
-        cur.execute("INSERT INTO articles(title,body,author) VALUES(%s,%s,%s)",
-                    (title, body, session['username']))
+        cur.execute("INSERT INTO articles(title,body,author,images) VALUES(%s,%s,%s,%s)",
+                    (title, body, session['username'], image))
 
         # commit to db
         mysql.connection.commit()

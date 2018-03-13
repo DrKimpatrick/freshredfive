@@ -49,6 +49,10 @@ def index():
 @app.route('/recipes')
 def recipes():
     return render_template('recipes.html')
+#render the form
+@app.route('/form')
+def form():
+    return render_template('form.html')
 
 
 # index lunchbox

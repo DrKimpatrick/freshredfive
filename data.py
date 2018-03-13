@@ -16,14 +16,14 @@ class Articles(db.Model):
     author = db.Column(db.String(80))
     body = db.Column(db.Text, nullable=False)
     create_date = db.Column(db.DateTime, nullable=False,
-                            default=datetime.utcnow)
+                            default=datetime.datetime.now)
 
     def __repr__(self):
         return '<User %r>' % self.username
 
 
-article1 = Articles(title='How red 5 was founded',
-                    author='chucky', body="Danston Mugarura a global business expert of Ugandan – British descent\
+article1 = Articles(title='Testing code',
+                    author='Dude', body="This is gonna work as  a global business expert of Ugandan – British descent\
                     He is an accomplished serial entrepreneur and a self-made millionaire.He founded Red Five ")
 
 

@@ -173,7 +173,7 @@ class ArticleForm(Form):
     title = StringField('Title', validators=[
                         DataRequired(), validators.Length(min=4, max=250)])
 
-    image = StringField('Image', validators=[
+    image = StringField('Enter Image link', validators=[
                         DataRequired(), validators.Length(min=4, max=250)])
 
     body = TextAreaField('Body', validators=[

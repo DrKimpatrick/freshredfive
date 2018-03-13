@@ -48,79 +48,7 @@
 				                </td>
 				            </tr>
 				            {% endfor %}
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Three</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">
-						    				<strong>I've added lots of examples so you can test pagination (Page 1,2... Prev, Next) as well as The Search Bar on top</strong>
-						    			</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Four</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
 
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Five</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Six</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Seven</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eight</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Nine</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Ten</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Eleven</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
-				            <tr><td>
-				                	<div class="single-article-instance">
-						    			<div class="blogheading"><a href="article.html" title="Go to Article">Sample Twelve</a></div>
-						    			<div class="blogdatetime">Date</div> <hr>
-						    			<div class="blogdescription">Sample Description</div>
-						    		</div>
-				            </td></tr>
 				        </tbody>
 				    </table>
 
@@ -148,7 +76,9 @@
 									<p class="card-text">{{new.body |safe |truncate }}
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
-											<button type="button" class="btn btn-sm btn-outline-secondary">Read more</button>
+											{# <button><a class="linkbutton"  href="article/{{article.id}}">Read More</a></button> #}
+											<a class="linkbutton"  href="article/{{article.id}}">Read More</a>
+											{# <button type="button" class="btn btn-sm btn-outline-secondary" href="article/{{article.id}}">Read more</button> #}
 
 										</div>
 										<small class="text-muted">{{new.create_date }}</small>

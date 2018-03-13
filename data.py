@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import *
 app = Flask(__name__)
 
 
@@ -16,7 +16,7 @@ class Articles(db.Model):
     author = db.Column(db.String(80))
     body = db.Column(db.Text, nullable=False)
     create_date = db.Column(db.DateTime, nullable=False,
-                            default=datetime.datetime.now)
+                            default=datetime.utcnow())
 
     def __repr__(self):
         return '<User %r>' % self.username

@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lunchbox.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cookschool.css') }}">
-    
+
 
 
     <!-- BOOSTRAP CSS-->
@@ -38,7 +38,8 @@
             </button>
             <div class="collapse navbar-collapse customnavlinks" id="navbarTogglerDemo01">
                 <div class="mainlogolink">
-                    <a class="navbar-brand" href={{url_for('index')}}><img src="static/images/logo-dark.png" alt="Logo"></a>
+                    {# <a class="navbar-brand" href={{url_for('index')}}><img src="static/images/logo-dark.png" alt="Logo"></a> #}
+                    <a class="navbar-brand" href={{url_for('index')}}><img src="{{ url_for('static', filename = 'images/logo-dark.png') }}" alt="Logo"></a>
                 </div>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
@@ -91,7 +92,8 @@
             <div class="col-sm-2">
                 <div class="saladmasterad">
                     <!--<a href="#" target="_blank">-->
-                        <img src="static/images/saladmaster.png" alt="saladmaster logo">
+                        {# <img src="static/images/saladmaster.png" alt="saladmaster logo"> #}
+                        <img src="{{ url_for('static', filename = 'images/saladmaster.png') }}" alt="saladmaster Logo"></a>
                     <!--</a>-->
                 </div>
             </div>

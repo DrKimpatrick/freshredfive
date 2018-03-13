@@ -254,7 +254,9 @@ def add_article():
         title = form.title.data
         body = form.body.data
         image = form.image.data
+
         #print(image)
+
         # create cursor to the db
         cur = mysql.connection.cursor()
 

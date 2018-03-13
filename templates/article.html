@@ -15,7 +15,7 @@
     			<!-- Selected Article -->
     			<div class="col-sm-8 allarticles">
     				<div class="single-article-instance">
-		    			<div class="blogimage"><img src={{ article.images }} alt="Blog Image"></div>
+		    			<div class="blogimage"><img src={{ url_for('static', filename='img/carousel/2.jpeg') }} alt="Blog Image"></div>
 		    			<div class="blogdescription">
 		    				{{article.body | safe }}
 		    			</div>

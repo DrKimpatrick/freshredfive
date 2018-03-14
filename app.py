@@ -51,6 +51,8 @@ def recipes():
     return render_template('recipes.html')
 
 # index lunchbox
+
+
 @app.route('/lunchbox')
 def lunchbox():
     return render_template('lunchbox.html')
@@ -90,6 +92,7 @@ def lifechanging():
     return render_template('lifechanging.html')
 
 # blog route
+
 
 @app.route('/blog')
 def blog():
@@ -255,7 +258,7 @@ def add_article():
         body = form.body.data
         image = form.image.data
 
-        #print(image)
+        # print(image)
 
         # create cursor to the db
         cur = mysql.connection.cursor()
@@ -306,8 +309,10 @@ def article(id):
 
     # get articles
     result = cur.execute("SELECT * FROM articles WHERE  id = %s", [id])
-
+    results = cur.execute("SELECT * FROM articles")
     if result > 0:
+
+        print(results)
         article = cur.fetchone()
         return render_template('article.html', article=article)
         cur.close()

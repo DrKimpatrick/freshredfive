@@ -4,13 +4,18 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from functools import wraps
 import random
+from flask_mail import Mail,Message
 
 app = Flask(__name__)
-#Articles = Articles()
 
-# config mysql
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-#db = SQLAlchemy(app)
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = ''
+app.config["MAIL_PASSWORD"] = ''
+
+mail =Mail(app)
 
 app.config['MYSQL_HOST'] = 'us-cdbr-iron-east-05.cleardb.net'
 app.config['MYSQL_USER'] = 'b12ca07045f6b4'
@@ -55,13 +60,32 @@ def recipes():
 
 @app.route('/lunchbox')
 def lunchbox():
+
     return render_template('lunchbox.html')
 
 # index dinnershow
 
 
-@app.route('/dinnershow')
+@app.route('/dinnershow',methods = ['POST', 'GET'] )
 def dinnershow():
+    if request.method =='POST':
+        result = request.form
+        list = [value for value in result.values()]
+        firstname = list[0]
+        lastname = list[1]
+        phone1 = list[2]
+        phone2 = list[3]
+        email = list[4]
+        date = list[5]
+        time = list[6]
+        allergies = list[7]
+        firsttime = list[8]
+        adults= list[9]
+        children=list[10]
+        notes = list[11]
+        msg = Message("We are getting back to you now ", sender= "", recipients=[''])
+        mail.send(msg)
+        print('Worked bro. ')
     return render_template('dinnershow.html')
 
 # index cookschool

@@ -4,18 +4,11 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from functools import wraps
 import random
-from flask_mail import Mail,Message
+import sendgrid
+from sendgrid.helpers.mail import *
 
 app = Flask(__name__)
 
-
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = ''
-app.config["MAIL_PASSWORD"] = ''
-
-mail =Mail(app)
 
 app.config['MYSQL_HOST'] = 'us-cdbr-iron-east-05.cleardb.net'
 app.config['MYSQL_USER'] = 'b12ca07045f6b4'
@@ -83,9 +76,33 @@ def dinnershow():
         adults= list[9]
         children=list[10]
         notes = list[11]
-        msg = Message("We are getting back to you now ", sender= "", recipients=[''])
-        mail.send(msg)
-        print('Worked bro. ')
+        sg = sendgrid.SendGridAPIClient(apikey='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')
+        data = {
+         "personalizations": [
+           {
+             "to": [
+               {
+                 "email": "bozicslxye1@gmail.com"
+               }
+             ],
+             "subject": "Fresh red 5 ordering recipes"
+           }
+         ],
+         "from": {
+           "email": "alice@eatforlife.ug"
+         },
+         "content": [
+           {
+             "type": "text/plain",
+             "value": str(notes + " " ) + str(children+ " ")  + str(adults + " " ) + str(firstname+ " ")  + str(email+ " ") + str(phone1)
+           }
+         ]
+        }
+        response = sg.client.mail.send.post(request_body=data)
+        print(response.status_code)
+        #print(response.body)
+        #print(response.headers)
+        #print('Worked bro. ')
     return render_template('dinnershow.html')
 
 # index cookschool

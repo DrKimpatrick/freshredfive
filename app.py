@@ -6,6 +6,7 @@ from functools import wraps
 import random
 import sendgrid
 from sendgrid.helpers.mail import *
+import os
 
 app = Flask(__name__)
 
@@ -76,7 +77,7 @@ def dinnershow():
         adults= list[9]
         children=list[10]
         notes = list[11]
-        sg = sendgrid.SendGridAPIClient(apikey='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')
+        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
         data = {
          "personalizations": [
            {

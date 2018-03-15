@@ -83,7 +83,7 @@ def dinnershow():
            {
              "to": [
                {
-                 "email": "bozicslxye1@gmail.com"
+                 "email": "alexshyaka@therailsshop.club"
                }
              ],
              "subject": "Fresh red 5 ordering recipes"

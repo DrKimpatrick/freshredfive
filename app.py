@@ -58,7 +58,7 @@ def lunchbox():
     return render_template('lunchbox.html')
 
 # index dinnershow
-
+#working on the emailing feature of the app.
 
 @app.route('/dinnershow',methods = ['POST', 'GET'] )
 def dinnershow():
@@ -77,25 +77,25 @@ def dinnershow():
         adults= list[9]
         children=list[10]
         notes = list[11]
-        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+        sg = sendgrid.SendGridAPIClient(apikey="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")
         data = {
          "personalizations": [
            {
              "to": [
                {
-                 "email": "alexshyaka@therailsshop.club"
+                 "email": "shyakaster@gmail.com"
                }
              ],
              "subject": "Fresh red 5 ordering recipes"
            }
-         ],
+        ],
          "from": {
-           "email": "alice@eatforlife.ug"
+           "email": email
          },
          "content": [
            {
              "type": "text/plain",
-             "value": str(notes + " " ) + str(children+ " ")  + str(adults + " " ) + str(firstname+ " ")  + str(email+ " ") + str(phone1)
+             "value": str(notes + " \n" ) + str("The number of children is  "+ children+ " ")  + str(" We are "+ adults + " adults \n" ) + str( " and my name is "+ firstname+ " ")  + str(" my email is " + email+ " ") + str(phone1+" Is my phone number")
            }
          ]
         }
@@ -109,8 +109,45 @@ def dinnershow():
 # index cookschool
 
 
-@app.route('/cookschool')
+@app.route('/cookschool', methods=['GET','POST'])
 def cookschool():
+    if request.method == "POST":
+        result = request.form
+        formdata =[value for value in result.values()]
+        firstname = formdata[1]
+        lastname = formdata[2]
+        phone1 = formdata[3]
+        phone2 = formdata[4]
+        email = formdata[5]
+        allergies = formdata[6]
+        otherpeople = formdata[7]
+        notes = formdata[8]
+        print(email)
+        sg = sendgrid.SendGridAPIClient(apikey="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")
+        data = {
+         "personalizations": [
+           {
+             "to": [
+               {
+                 "email": "shyakaster@gmail.com"
+               }
+             ],
+             "subject": "Bookings from cookschool"
+           }
+        ],
+         "from": {
+           "email": email
+         },
+         "content": [
+           {
+             "type": "text/plain",
+             "value": str(notes + " \n" ) + str("My name is "+ firstname+ " " +lastname )  + str("The other people coming are "+ otherpeople + " " )  + str(" and  my email contact is " + email+ " ") + str(phone1+" Is my phone number " + " Thanks")
+           }
+         ]
+        }
+        response = sg.client.mail.send.post(request_body=data)
+        print(response.status_code)
+        #print(result)
     return render_template('cookschool.html')
 
 # index openhouse

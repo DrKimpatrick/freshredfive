@@ -77,25 +77,25 @@ def dinnershow():
         adults= list[9]
         children=list[10]
         notes = list[11]
-        sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+        sg = sendgrid.SendGridAPIClient(apikey="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")
         data = {
          "personalizations": [
            {
              "to": [
                {
-                 "email": "alexshyaka@therailsshop.club"
+                 "email": "bozicslxye1@gmail.com"
                }
              ],
              "subject": "Fresh red 5 ordering recipes"
            }
-         ],
+        ],
          "from": {
-           "email": "alice@eatforlife.ug"
+           "email": email
          },
          "content": [
            {
              "type": "text/plain",
-             "value": str(notes + " " ) + str(children+ " ")  + str(adults + " " ) + str(firstname+ " ")  + str(email+ " ") + str(phone1)
+             "value": str(notes + " \n" ) + str("The number of children is  "+ children+ " ")  + str(" We are "+ adults + " adults \n" ) + str( " and my name is "+ firstname+ " ")  + str(" my email is " + email+ " ") + str(phone1+" Is my phone number")
            }
          ]
         }

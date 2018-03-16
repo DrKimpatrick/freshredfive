@@ -58,7 +58,7 @@ def lunchbox():
     return render_template('lunchbox.html')
 
 # index dinnershow
-
+#working on the emailing feature of the app.
 
 @app.route('/dinnershow',methods = ['POST', 'GET'] )
 def dinnershow():

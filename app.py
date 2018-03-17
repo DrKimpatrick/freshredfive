@@ -83,7 +83,7 @@ def dinnershow():
            {
              "to": [
                {
-                 "email": "shyakaster@gmail.com"
+                 "email": 'info@eatforlife.ug'
                }
              ],
              "subject": "Fresh red 5 ordering recipes"
@@ -136,7 +136,7 @@ def cookschool():
            }
         ],
          "from": {
-           "email": email
+           "email": 'info@eatforlife.ug'
          },
          "content": [
            {
@@ -153,8 +153,46 @@ def cookschool():
 # index openhouse
 
 
-@app.route('/openhouse')
+@app.route('/openhouse', methods=['GET', 'POST'])
 def openhouse():
+    if request.method == "POST":
+        result = request.form
+        formdata =[value for value in result.values()]
+        #print(formdata)
+        firstname = formdata[1]
+        lastname = formdata[1]
+        phone1 = formdata[3]
+        phone2 = formdata[4]
+        email = formdata[5]
+        age = formdata[6] 
+        work_state = formdata[7]
+        industry=formdata[8]
+        notes = formdata[9]       
+        print(lastname)
+        sg = sendgrid.SendGridAPIClient(apikey="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")
+        data = {
+         "personalizations": [
+           {
+             "to": [
+               {
+                 "email": "shyakaster@gmail.com"
+               }
+             ],
+             "subject": "Bookings from Open house Event"
+           }
+        ],
+         "from": {
+           "email": 'info@eatforlife.ug'
+         },
+         "content": [
+           {
+             "type": "text/plain",
+             "value": str(notes + " \n" ) + str("My name is "+ firstname+ " " +lastname )  + str("My age "+ age + " " )  + str(" and  my email contact is " + email+ " ") + str(phone1+" Is my phone number " + " Thanks")
+           }
+         ]
+        }
+        response = sg.client.mail.send.post(request_body=data)
+        print(response.status_code)
     return render_template('openhouse.html')
 
 

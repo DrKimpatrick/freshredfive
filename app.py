@@ -164,10 +164,10 @@ def openhouse():
         phone1 = formdata[3]
         phone2 = formdata[4]
         email = formdata[5]
-        age = formdata[6] 
+        age = formdata[6]
         work_state = formdata[7]
         industry=formdata[8]
-        notes = formdata[9]       
+        notes = formdata[9]
         print(lastname)
         sg = sendgrid.SendGridAPIClient(apikey="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")
         data = {

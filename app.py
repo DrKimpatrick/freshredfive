@@ -83,7 +83,9 @@ def dinnershow():
            {
              "to": [
                {
+
                  "email": 'info@eatforlife.ug'
+
                }
              ],
              "subject": "Fresh red 5 ordering recipes"
@@ -136,7 +138,9 @@ def cookschool():
            }
         ],
          "from": {
+
            "email": 'info@eatforlife.ug'
+
          },
          "content": [
            {

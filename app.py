@@ -1,11 +1,10 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, request
+from flask import Flask, render_template, flash, redirect, url_for, session, request,send_file
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from functools import wraps
 import random
 import sendgrid
-from sendgrid.helpers.mail import *
 import os
 
 app = Flask(__name__)
@@ -38,8 +37,13 @@ def is_logged_in(f):
 
 
 # index route
-@app.route('/')
+@app.route('/', methods=['GET',"POST"])
 def index():
+    if request.method =='POST':
+        result = request.form
+        list = [value for value in result.values()]
+        print(list)
+        return send_file("static/We Change Lives DAnny\'s Book FInal.pdf", attachment_filename="We Change Lives DAnny's Book")
     return render_template('index.html')
 
 # index recipes
@@ -83,14 +87,16 @@ def dinnershow():
            {
              "to": [
                {
+
                  "email": 'info@eatforlife.ug'
+
                }
              ],
              "subject": "Fresh red 5 ordering recipes"
            }
         ],
          "from": {
-           "email": email
+           "email": 'info@eatforlife.ug'
          },
          "content": [
            {
@@ -101,9 +107,6 @@ def dinnershow():
         }
         response = sg.client.mail.send.post(request_body=data)
         print(response.status_code)
-        #print(response.body)
-        #print(response.headers)
-        #print('Worked bro. ')
     return render_template('dinnershow.html')
 
 # index cookschool
@@ -136,7 +139,9 @@ def cookschool():
            }
         ],
          "from": {
+
            "email": 'info@eatforlife.ug'
+
          },
          "content": [
            {
@@ -164,10 +169,10 @@ def openhouse():
         phone1 = formdata[3]
         phone2 = formdata[4]
         email = formdata[5]
-        age = formdata[6] 
+        age = formdata[6]
         work_state = formdata[7]
         industry=formdata[8]
-        notes = formdata[9]       
+        notes = formdata[9]
         print(lastname)
         sg = sendgrid.SendGridAPIClient(apikey="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")
         data = {

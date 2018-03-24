@@ -9,10 +9,11 @@
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item item active">
-				<img class="d-block w-100" src="static/images/carousel/4.jpg" alt="First slide">
+				<img class="d-block w-100" src="static/images/carousel/4.jpg" alt="Carousel Image">
 				<div class="carousel-caption d-none d-md-block">
 				    <h1>Cook School</h1>
 				    <h5>Let's have fun and learn how to maximize nutrition in your traditional family meals</h5>
@@ -20,11 +21,19 @@
 			  	</div>
 			</div>
 			<div class="carousel-item item">
-			  	<img class="d-block w-100" src="static/images/carousel/5.jpg" alt="Second slide">
+			  	<img class="d-block w-100" src="static/images/carousel/5.jpg" alt="Carousel Image">
 				<div class="carousel-caption d-none d-md-block">
 				    <h1>Business Opportunity</h1>
 				    <h5>We are expanding our business! Why not you?</h5>
 				    <h6><a href={{ url_for("openhouse")}}>Learn More</a></h6>
+			  	</div>
+			</div>
+			<div class="carousel-item item">
+			  	<img class="d-block w-100" src="static/images/carousel/6.jpg" alt="Carousel Image">
+				<div class="carousel-caption d-none d-md-block">
+				    <h6>
+				    	<a data-toggle="modal" data-target="#popupModal" href="/static/" download="We Change Lives DAnny's Book FInal.pdf">Download EBook</a>
+				    </h6>
 			  	</div>
 			</div>
 		</div>
@@ -38,6 +47,39 @@
 		</a>
 	</div>
 
+	<!-- Modal: Bootstrap 4 Popup -->
+	<div class="modal fade container" id="popupModal">
+		<div class="modal-dialog modal-sm" style="max-width: 600px !important;">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Download EBook</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form name="form2" method="post" action="/">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" name="fullname" id="fullname" placeholder="Full Name" required="required">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email" required="required">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" name="tel" id="tel" placeholder="Telephone">
+						</div>
+						
+						
+						<button type="submit" class="btn btn-primary" name="btnDone" id="btnDone">Send Request</button>
+					</form>
+				</div>
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Mission -->
     <div class="maroonsection mission">
@@ -75,8 +117,9 @@
 	<div class="freeshowad" id="bookyourdinner">
 		<div class="container">
 			<div style="font-size: 80px;">Book Your Dinner Show</div>
-			<div style="font-size: 30px">To book your FREE Dinner Show contact us now!</div><br>
+			<div style="font-size: 30px">To book your FREE Dinner Show contact us now.</div><br>
 			<a class="linkbutton" href="dinnershow#booking">Book Now</a>
+			<a class="linkbutton" href="#" data-toggle="modal" data-target="#popupModal">Download EBook</a>
 		</div>
 	</div>
 

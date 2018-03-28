@@ -43,7 +43,7 @@ def index():
         result = request.form
         list = [value for value in result.values()]
         print(list)
-        return send_file("static/We Change Lives DAnny\'s Book FInal.pdf", attachment_filename="We Change Lives DAnny's Book")
+        return send_file("static/We Change Lives DAnny\'s Book FInal.pdf")
     return render_template('index.html')
 
 # index recipes

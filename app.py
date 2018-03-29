@@ -431,10 +431,10 @@ def article(id):
 
     # get articles
     result = cur.execute("SELECT * FROM articles WHERE  id = %s", [id])
-    results = cur.execute("SELECT * FROM articles")
+    #results = cur.execute("SELECT * FROM articles")
     if result > 0:
 
-        print(results)
+        print(result)
         article = cur.fetchone()
         return render_template('article.html', article=article)
         cur.close()

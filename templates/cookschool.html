@@ -26,7 +26,7 @@
 				<div class="row form-row">
 					<div class="col-md-2 box-item"></div>
 					<div class="col-md-8">
-						<form name="form1" method="post" action="">
+						<form name="form1" method="post" action="/cookschool">
 							<div class="row cookschoolform">
 								<div class="col-md-12">
 									<label><strong>Select a Cook School Date</strong></label>
@@ -55,31 +55,31 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control input-lg" name="firstname" id="firstname" placeholder="First Name" required="required">
+										<input type="text" class="form-control input-lg" name="firstname" id="firstname" value="{{ request.form.firstname}}" placeholder="First Name" required="required">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control input-lg" name="lastname" id="lastname" placeholder="Last Name" required="required">
+										<input type="text" class="form-control input-lg" name="lastname" id="lastname" value="{{ request.form.lastname}}" placeholder="Last Name" required="required">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="phone" class="form-control input-lg" name="phone" id="phone" placeholder="Phone" required="required">
+										<input type="phone" class="form-control input-lg" name="phone" id="phone" value="{{ request.form.phone}}" placeholder="Phone" required="required">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="phone" class="form-control input-lg" name="phone2" id="phone2" placeholder="Phone 2">
+										<input type="phone" class="form-control input-lg" name="phone2" id="phone2" value="{{ request.form.phone2}}" placeholder="Phone 2">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email">
+										<input type="email" class="form-control input-lg" name="email" id="email" value="{{request.form.email}}" placeholder="Email">
 									</div>
 								</div>
 							</div>
@@ -88,8 +88,8 @@
 									<div class="form-group">
 										<div class="radio">
 											<label>Are you a Customer?</label>&nbsp;
-											<label><input type="radio" name="allergies">YES</label>&nbsp;
-											<label><input type="radio" name="allergies" checked="checked">NO</label>
+											<label><input type="radio" name="allergies" value="yes">YES</label>&nbsp;
+											<label><input type="radio" name="allergies" value="no">NO</label>
 										</div>
 									</div>
 								</div>
@@ -99,11 +99,11 @@
 									<div class="form-group">
 										<div class="radio">
 											<label>How many people are coming with you?</label>&nbsp;
-											<label><input type="radio" name="otherpeople" checked="checked">Just Me</label>&nbsp;
-											<label><input type="radio" name="otherpeople">1</label>
-											<label><input type="radio" name="otherpeople">2-3</label>
-											<label><input type="radio" name="otherpeople">4-5</label>
-											<label><input type="radio" name="otherpeople">6+</label>
+											<!-- <label><input type="radio" name="otherpeople" value="Me">Just Me</label>&nbsp; -->
+											<label><input type="radio" name="otherpeople" value="1">1</label>
+											<label><input type="radio" name="otherpeople" value="2-3">2-3</label>
+											<label><input type="radio" name="otherpeople" value="4-5">4-5</label>
+											<label><input type="radio" name="otherpeople" value="6+">6+</label>
 										</div>
 									</div>
 								</div>
@@ -111,7 +111,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea name="notes" id="notes" class="form-control" rows="4" cols="25" placeholder="Notes"></textarea>
+										<textarea name="notes" id="notes" class="form-control" rows="4" cols="25" value="{{ request.form.notes}}" placeholder="Notes"></textarea>
 									</div>
 									<button type="submit" class="btn btn-4 btn-block" name="btnBooking" id="btnBbooking">
 									Send Request</button>

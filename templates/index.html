@@ -60,13 +60,13 @@
 				<div class="modal-body">
 					<form name="form2" method="post" action="/">
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" name="fullname" id="fullname" placeholder="Full Name" required="required">
+							<input type="text" class="form-control input-lg" name="fullname" id="fullname" value="{{ request.form.fullname}}" placeholder="Full Name" required="required">
 						</div>
 						<div class="form-group">
-							<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email" required="required">
+							<input type="email" class="form-control input-lg" name="email" id="email" value="{{ request.form.email}}"  placeholder="Email" required="required">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" name="tel" id="tel" placeholder="Telephone">
+							<input type="text" class="form-control input-lg" name="tel" id="tel" value="{{ request.form.tel}}"  placeholder="Telephone">
 						</div>
 						
 						

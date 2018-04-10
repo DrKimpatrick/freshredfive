@@ -4,11 +4,20 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
 from functools import wraps
 import random
-import sendgrid
-import os
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
+app.config.update(
+    DEBUG=True,
+    # EMAIL SETTINGS
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=465,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME='inforedfive@gmail.com',
+    MAIL_PASSWORD='fcukoff2017'
+)
+mail = Mail(app)
 
 app.config['MYSQL_HOST'] = 'us-cdbr-iron-east-05.cleardb.net'
 app.config['MYSQL_USER'] = 'b12ca07045f6b4'
@@ -35,14 +44,41 @@ def is_logged_in(f):
             return redirect(url_for('login'))
     return wrap
 
+# # index route
+# @app.route('/mail', methods=['GET'])
+# def send_mail():
+#     try:
+#         msg=Message("Send Mail Redfive!",
+#             sender="inforedfive@gmail.com",
+#             recipients=["sekitocharlse@gmail.com", "bozicslxye1@gmail.com"])
+#         msg.html = "Yo \n <p> Have you registered for the emails yet</p> "
+#         mail.send(msg)
+#         return "it worked tho "
+#     except Exception as e:
+#         return str(e)
+
 
 # index route
 @app.route('/', methods=['GET',"POST"])
 def index():
     if request.method =='POST':
-        result = request.form
-        list = [value for value in result.values()]
-        print(list)
+        name = request.form['fullname']
+        email = request.form['email']
+        num=request.form['tel']
+        #print(num)
+        # create cursor to the db
+        cur = mysql.connection.cursor()
+
+        # execute
+        cur.execute("INSERT INTO bookregister(name,email,phone) VALUES(%s,%s,%s)",
+                    (name, email,num))
+
+        # commit to db
+        mysql.connection.commit()
+
+        # close connection
+        cur.close()
+        
         return send_file("static/We Change Lives DAnny\'s Book FInal.pdf")
     return render_template('index.html')
 
@@ -58,7 +94,6 @@ def recipes():
 
 @app.route('/lunchbox')
 def lunchbox():
-
     return render_template('lunchbox.html')
 
 # index dinnershow
@@ -67,46 +102,37 @@ def lunchbox():
 @app.route('/dinnershow',methods = ['POST', 'GET'] )
 def dinnershow():
     if request.method =='POST':
-        result = request.form
-        list = [value for value in result.values()]
-        firstname = list[0]
-        lastname = list[1]
-        phone1 = list[2]
-        phone2 = list[3]
-        email = list[4]
-        date = list[5]
-        time = list[6]
-        allergies = list[7]
-        firsttime = list[8]
-        adults= list[9]
-        children=list[10]
-        notes = list[11]
-        sg = sendgrid.SendGridAPIClient(apikey="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")
-        data = {
-         "personalizations": [
-           {
-             "to": [
-               {
-
-                 "email": 'info@eatforlife.ug'
-
-               }
-             ],
-             "subject": "Fresh red 5 ordering recipes"
-           }
-        ],
-         "from": {
-           "email": 'info@eatforlife.ug'
-         },
-         "content": [
-           {
-             "type": "text/plain",
-             "value": str(notes + " \n" ) + str("The number of children is  "+ children+ " ")  + str(" We are "+ adults + " adults \n" ) + str( " and my name is "+ firstname+ " ")  + str(" my email is " + email+ " ") + str(phone1+" Is my phone number")
-           }
-         ]
-        }
-        response = sg.client.mail.send.post(request_body=data)
-        print(response.status_code)
+        firstname =request.form['firstname']
+        lastname =request.form['lastname']
+        phone1 = request.form['phone']
+        phone2 = request.form['phone2']
+        email = request.form['email']
+        date = request.form['date']
+        time = request.form['time']
+        allergies = request.form['allergies']
+        first_time = request.form['firsttime']
+        number_of_adults = request.form['adults']
+        number_of_children = request.form['children']
+        notes = request.form['notes']
+        msg = "Hey i am booking for a dinnershow \nMY names are {} {} and my mobile numbers are {} {}\
+        \nMY email is {}\nThe Date and time i am ordering are {} {} \nWe are {} adults and {} children our allergies {}\
+        \nOur reservation notes are {} ".format(
+                        firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
+        #print(msg)
+        try:
+            msg=Message("Dinnershow Bookings at Freshred5",
+                sender="inforedfive@gmail.com",
+                recipients=["alice@eatforlife.ug","alina@eatforlife.ug", "diana@eatforlife.ug","admin@eatforlife.ug",\
+                "saidat@eatforlife.ug", "bozicslxye1@gmail.com"])
+            msg.body =  "Hey i am booking for a dinnershow. \nMy names are {} {} and my mobile numbers are {} {}.\
+            \nMy email is {}.\nThe Date and time i am ordering are {} {}. \nWe are {} adults and {} children our allergies {}.\
+            \nOur reservation notes are {} .".format(
+                        firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
+            mail.send(msg)
+            response = "thank you for your inquiry, one of the representatives will get back to you in 24 hours."
+            return "<p> thank you for your inquiry, one of the representatives will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
+        except Exception as e:
+            return str(e)
     return render_template('dinnershow.html')
 
 # index cookschool
@@ -115,44 +141,27 @@ def dinnershow():
 @app.route('/cookschool', methods=['GET','POST'])
 def cookschool():
     if request.method == "POST":
-        result = request.form
-        formdata =[value for value in result.values()]
-        firstname = formdata[1]
-        lastname = formdata[2]
-        phone1 = formdata[3]
-        phone2 = formdata[4]
-        email = formdata[5]
-        allergies = formdata[6]
-        otherpeople = formdata[7]
-        notes = formdata[8]
-        print(email)
-        sg = sendgrid.SendGridAPIClient(apikey="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")
-        data = {
-         "personalizations": [
-           {
-             "to": [
-               {
-                 "email": "shyakaster@gmail.com"
-               }
-             ],
-             "subject": "Bookings from cookschool"
-           }
-        ],
-         "from": {
+        firstname =request.form['firstname']
+        lastname =request.form['lastname']
+        phone1 = request.form['phone']
+        phone2 = request.form['phone2']
+        email=request.form['email']
+        notes=request.form['notes']
+        num_of_people=request.form['otherpeople']
+        customer_allergies=request.form['allergies']
+        try:
+            msg=Message("Cookschool Bookings at Freshred5",
+                sender="inforedfive@gmail.com",
+                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","diana@eatforlife.ug", "bozicslxye1@gmail.com"])
+            msg.body =  "Hey i am booking for a Cookschool. \nMy names are {} {} and my mobile numbers are {} {}.\
+            \nMy email is {}.\nWe are {} people and our allergies {}.\
+            \nOur reservation notes are {} .".format(
+                        firstname,lastname,phone1,phone2,email,num_of_people,customer_allergies,notes)
+            mail.send(msg)
+            return "<p> Thanks for booking a cookschool <a href="">Click here to go back</a> </p> "
+        except Exception as e:
+            return str(e)
 
-           "email": 'info@eatforlife.ug'
-
-         },
-         "content": [
-           {
-             "type": "text/plain",
-             "value": str(notes + " \n" ) + str("My name is "+ firstname+ " " +lastname )  + str("The other people coming are "+ otherpeople + " " )  + str(" and  my email contact is " + email+ " ") + str(phone1+" Is my phone number " + " Thanks")
-           }
-         ]
-        }
-        response = sg.client.mail.send.post(request_body=data)
-        print(response.status_code)
-        #print(result)
     return render_template('cookschool.html')
 
 # index openhouse
@@ -161,43 +170,34 @@ def cookschool():
 @app.route('/openhouse', methods=['GET', 'POST'])
 def openhouse():
     if request.method == "POST":
-        result = request.form
-        formdata =[value for value in result.values()]
-        #print(formdata)
-        firstname = formdata[1]
-        lastname = formdata[1]
-        phone1 = formdata[3]
-        phone2 = formdata[4]
-        email = formdata[5]
-        age = formdata[6]
-        work_state = formdata[7]
-        industry=formdata[8]
-        notes = formdata[9]
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        phone1 = request.form['phone']
+        phone2 = request.form['phone2']
+        email = request.form['email']
+        age = request.form['age']
+        working_state = request.form['allergies']
+        industry=request.form['industry']
+        notes = request.form['notes']
         print(lastname)
-        sg = sendgrid.SendGridAPIClient(apikey="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")
-        data = {
-         "personalizations": [
-           {
-             "to": [
-               {
-                 "email": "shyakaster@gmail.com"
-               }
-             ],
-             "subject": "Bookings from Open house Event"
-           }
-        ],
-         "from": {
-           "email": 'info@eatforlife.ug'
-         },
-         "content": [
-           {
-             "type": "text/plain",
-             "value": str(notes + " \n" ) + str("My name is "+ firstname+ " " +lastname )  + str("My age "+ age + " " )  + str(" and  my email contact is " + email+ " ") + str(phone1+" Is my phone number " + " Thanks")
-           }
-         ]
-        }
-        response = sg.client.mail.send.post(request_body=data)
-        print(response.status_code)
+        print(notes)
+        print(industry)
+        print(working_state)
+        try:
+            msg=Message("Open House Bookings at Freshred5",
+                sender="inforedfive@gmail.com",
+                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","priscilla@eatforlife.ug",\
+                "vivian@eatforlife.ug", "bozicslxye1@gmail.com"])
+            msg.body =  "Hey i am booking for a OpenHouse. \nMy names are {} {} and my mobile numbers are {} {}.\
+            \nMy email is {}.\nMy age is {} and my working state is {}.\
+            \nMy working industry is {} \
+            \nMy OpenHouse notes are {} .".format(
+                        firstname,lastname,phone1,phone2,email,age,working_state,industry,notes)
+            mail.send(msg)
+            return "<p> Thanks for the  Openhouse reservation <a href="">Click here to go back</a> </p> "
+        except Exception as e:
+            return str(e)
+        
     return render_template('openhouse.html')
 
 
@@ -230,7 +230,8 @@ def blog():
     newest = reversed(articles)
 
     if result > 0:
-        return render_template('blog.html', articles=articles, article=random_article, newest=newest, article1=article1)
+        return render_template('blog.html', articles=articles,
+         article=random_article, newest=newest, article1=article1)
 
     else:
         msg = "No articles where found"
@@ -283,14 +284,35 @@ def dashboard():
     # get articles
     result = cur.execute("SELECT * FROM articles")
     articles = cur.fetchall()
+    register_users= cur.execute("SELECT * FROM bookregister")
+    print(register_users)
     if result > 0:
+
         return render_template('dashboard.html', articles=articles)
+
+    
+
 
     else:
         msg = "No articles where found"
         return render_template('dashboard.html', msg)
 
     cur.close()
+
+# dashboard
+@app.route('/registered')
+@is_logged_in
+def registered():
+
+    # create cursor
+    cur = mysql.connection.cursor()
+
+    # get registered users
+    articles= cur.execute("SELECT * FROM bookregister")
+    #print(register_users)
+    # if result > 0:
+
+    return render_template('dashboard.html', articles=articles)
 
 
 # creating articles form
@@ -431,7 +453,6 @@ def article(id):
 
     # get articles
     result = cur.execute("SELECT * FROM articles WHERE  id = %s", [id])
-    #results = cur.execute("SELECT * FROM articles")
     if result > 0:
 
         print(result)

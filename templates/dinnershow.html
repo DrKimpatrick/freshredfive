@@ -153,36 +153,36 @@
 			<div class="row form-row">
 				<div class="col-md-2 box-item"></div>
 				<div class="col-md-8">
-					<form name="form1" method="post" action="">
+					<form name="form1" method="post" action="/dinnershow">
 						<div class="row">
 							<div class="col-md-12"><small>Personal Details</small><hr></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control input-lg" name="firstname" id="firstname" placeholder="First Name" required="required">
+									<input type="text" class="form-control input-lg" name="firstname" id="firstname" placeholder="First Name" value="{{request.form.firstname}}" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control input-lg" name="lastname" id="lastname" placeholder="Last Name" required="required">
+									<input type="text" class="form-control input-lg" name="lastname" id="lastname" placeholder="Last Name" value="{{request.form.lastname}}" required="required">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="phone" class="form-control input-lg" name="phone" id="phone" placeholder="Phone" required="required">
+									<input type="phone" class="form-control input-lg" name="phone" id="phone" placeholder="Phone" value="{{request.form.phone}}" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">								
 								<div class="form-group">
-									<input type="phone" class="form-control input-lg" name="phone2" id="phone2" placeholder="Phone 2">
+									<input type="phone" class="form-control input-lg" name="phone2" id="phone2" value="{{request.form.phone2}}" placeholder="Phone 2">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email">
+									<input type="email" class="form-control input-lg" name="email" id="email" placeholder="Email" value="{{request.form.email}}">
 								</div>
 							</div>
 						</div>
@@ -190,12 +190,12 @@
 							<div class="col-md-12"><small>Date and Time</small><hr></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="date" class="form-control input-lg" name="date" id="date" required="required">
+									<input type="date" class="form-control input-lg" name="date" id="date" value="{{request.form.date}}" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">								
 								<div class="form-group">
-									<input type="time" class="form-control input-lg" name="time" id="time" required="required">
+									<input type="time" class="form-control input-lg" name="time" id="time" value="{{request.form.time}}" required="required">
 								</div>
 							</div>
 						</div>
@@ -205,8 +205,8 @@
 								<div class="form-group">
 									<div class="radio">
 										<label>Do you have any Allergies?</label>&nbsp;
-										<label><input type="radio" name="allergies">YES</label>&nbsp;
-									  	<label><input type="radio" name="allergies" checked="checked">NO</label>
+										<label><input type="radio" name="allergies" value="Yes">YES</label>&nbsp;
+									  	<label><input type="radio" name="allergies" value="No">NO</label>
 									</div>
 								</div>
 							</div>
@@ -216,8 +216,8 @@
 								<div class="form-group">
 									<div class="radio">
 										<label>Is this your first time seeing the Dinner Show?</label>&nbsp;
-										<label><input type="radio" name="firsttime" checked="checked">YES</label>&nbsp;
-									  	<label><input type="radio" name="firsttime">NO</label>
+										<label><input type="radio" name="firsttime" value="First Time Seeing dinnershow: Yes">YES</label>&nbsp;
+									  	<label><input type="radio" name="firsttime" value="Not Seeing Dinnershow for first time">NO</label>
 									</div>
 								</div>
 							</div>
@@ -225,19 +225,19 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="number" class="form-control input-lg" name="adults" id="adults" placeholder="Number of Adults" required="required">
+									<input type="number" class="form-control input-lg" name="adults" id="adults" placeholder="Number of Adults" value="{{request.form.adults}}" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">								
 								<div class="form-group">
-									<input type="number" class="form-control input-lg" name="children" id="children" placeholder="Number of Children" required="required">
+									<input type="number" class="form-control input-lg" name="children" id="children" placeholder="Number of Children" value="{{request.form.children}}" required="required">
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<textarea name="notes" id="notes" class="form-control" rows="4" cols="25" placeholder="Notes"></textarea>
+									<textarea name="notes" id="notes" class="form-control" rows="4" cols="25" value="{{request.form.notes}}" placeholder="Notes"></textarea>
 								</div>
 								<button type="submit" class="btn btn-4 btn-block" name="btnBooking" id="btnBbooking">
 							Send Request</button>

@@ -123,14 +123,15 @@ def dinnershow():
             msg=Message("Dinnershow Bookings at Freshred5",
                 sender="inforedfive@gmail.com",
                 recipients=["alice@eatforlife.ug","alina@eatforlife.ug", "diana@eatforlife.ug","admin@eatforlife.ug",\
-                "saidat@eatforlife.ug", "bozicslxye1@gmail.com"])
+                "saidat@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
             msg.body =  "Hey i am booking for a dinnershow. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nThe Date and time i am ordering are {} {}. \nWe are {} adults and {} children our allergies {}.\
             \nOur reservation notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
             mail.send(msg)
             response = "thank you for your inquiry, one of the representatives will get back to you in 24 hours."
-            return "<p> thank you for your inquiry, one of the representatives will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
+            return "<p> thank you for your inquiry, one of the representatives\
+                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
     return render_template('dinnershow.html')
@@ -152,13 +153,15 @@ def cookschool():
         try:
             msg=Message("Cookschool Bookings at Freshred5",
                 sender="inforedfive@gmail.com",
-                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","diana@eatforlife.ug", "bozicslxye1@gmail.com"])
+                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","diana@eatforlife.ug"\
+                ,"bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
             msg.body =  "Hey i am booking for a Cookschool. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nWe are {} people and our allergies {}.\
             \nOur reservation notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,num_of_people,customer_allergies,notes)
             mail.send(msg)
-            return "<p> Thanks for booking a cookschool <a href="">Click here to go back</a> </p> "
+            return "<p> Thank you for your inquiry, one of the representatives\
+                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
 
@@ -187,14 +190,15 @@ def openhouse():
             msg=Message("Open House Bookings at Freshred5",
                 sender="inforedfive@gmail.com",
                 recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","priscilla@eatforlife.ug",\
-                "vivian@eatforlife.ug", "bozicslxye1@gmail.com"])
+                "vivian@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
             msg.body =  "Hey i am booking for a OpenHouse. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nMy age is {} and my working state is {}.\
             \nMy working industry is {} \
             \nMy OpenHouse notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,age,working_state,industry,notes)
             mail.send(msg)
-            return "<p> Thanks for the  Openhouse reservation <a href="">Click here to go back</a> </p> "
+            return "<p> Thank you for your inquiry, one of the representatives\
+                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
         

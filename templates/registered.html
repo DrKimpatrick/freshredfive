@@ -1,0 +1,30 @@
+{% extends '_layout.html' %}
+
+{% block body %}
+  <h1>Registered Users <small>For the ebook</small></h1>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for user in users %}
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>
+          {# <form action="{{url_for('delete_article', id=article.id)}}" method="post"> #}
+            {# <input type="hidden" name="_method" value="DELETE"> #}
+            {# <input type="submit" value="Delete" class="btn btn-danger"> #}
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

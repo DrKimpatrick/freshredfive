@@ -78,7 +78,7 @@ def index():
 
         # close connection
         cur.close()
-        
+
         return send_file("static/We Change Lives DAnny\'s Book FInal.pdf")
     return render_template('index.html')
 
@@ -120,7 +120,7 @@ def dinnershow():
                         firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
         #print(msg)
         try:
-            msg=Message("Dinnershow Bookings at Freshred5",
+            msg=Message("Dinnershow Bookings at Eatforlife",
                 sender="inforedfive@gmail.com",
                 recipients=["alice@eatforlife.ug","alina@eatforlife.ug", "diana@eatforlife.ug","admin@eatforlife.ug",\
                 "saidat@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
@@ -129,9 +129,7 @@ def dinnershow():
             \nOur reservation notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
             mail.send(msg)
-            response = "thank you for your inquiry, one of the representatives will get back to you in 24 hours."
-            return "<p> thank you for your inquiry, one of the representatives\
-                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
+            return "<p> thank you for your inquiry, one of the representatives will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
     return render_template('dinnershow.html')
@@ -151,17 +149,16 @@ def cookschool():
         num_of_people=request.form['otherpeople']
         customer_allergies=request.form['allergies']
         try:
-            msg=Message("Cookschool Bookings at Freshred5",
+            msg=Message("Cookschool Bookings at Eatforlife",
                 sender="inforedfive@gmail.com",
-                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","diana@eatforlife.ug"\
-                ,"bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
+                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug"\
+                ,"diana@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
             msg.body =  "Hey i am booking for a Cookschool. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nWe are {} people and our allergies {}.\
             \nOur reservation notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,num_of_people,customer_allergies,notes)
             mail.send(msg)
-            return "<p> Thank you for your inquiry, one of the representatives\
-                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
+            return "<p> Thanks for booking a cookschool <a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
 
@@ -182,12 +179,8 @@ def openhouse():
         working_state = request.form['allergies']
         industry=request.form['industry']
         notes = request.form['notes']
-        print(lastname)
-        print(notes)
-        print(industry)
-        print(working_state)
         try:
-            msg=Message("Open House Bookings at Freshred5",
+            msg=Message("Open House Bookings at Eatforlife",
                 sender="inforedfive@gmail.com",
                 recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","priscilla@eatforlife.ug",\
                 "vivian@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
@@ -197,11 +190,10 @@ def openhouse():
             \nMy OpenHouse notes are {} .".format(
                         firstname,lastname,phone1,phone2,email,age,working_state,industry,notes)
             mail.send(msg)
-            return "<p> Thank you for your inquiry, one of the representatives\
-                     will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
+            return "<p> Thanks for the  Openhouse reservation <a href="">Click here to go back</a> </p> "
         except Exception as e:
             return str(e)
-        
+
     return render_template('openhouse.html')
 
 
@@ -288,18 +280,16 @@ def dashboard():
     # get articles
     result = cur.execute("SELECT * FROM articles")
     articles = cur.fetchall()
-    register_users= cur.execute("SELECT * FROM bookregister")
-    print(register_users)
     if result > 0:
 
         return render_template('dashboard.html', articles=articles)
 
-    
+
 
 
     else:
         msg = "No articles where found"
-        return render_template('dashboard.html', msg)
+        return render_template('dashboard.html', msg=msg)
 
     cur.close()
 
@@ -312,12 +302,16 @@ def registered():
     cur = mysql.connection.cursor()
 
     # get registered users
-    articles= cur.execute("SELECT * FROM bookregister")
-    #print(register_users)
-    # if result > 0:
+    register_users= cur.execute("SELECT * FROM bookregister")
+    users = cur.fetchall()
+    # print(users)
+    if register_users > 0:
+        return render_template('registered.html',users=users)
 
-    return render_template('dashboard.html', articles=articles)
-
+    else:
+        msg = "No users where found"
+        return render_template('registered.html',msg=msg)
+    cur.close()
 
 # creating articles form
 class ArticleForm(Form):

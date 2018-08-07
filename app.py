@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, request,send_file
+from flask import Flask, render_template, flash, redirect, url_for, session, request, send_file
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from wtforms.validators import DataRequired
@@ -29,7 +29,6 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 # session key
-
 app.secret_key = '\x1c\x940h\xb1\xe3\xf6\x17\xa8.n\x17\xbd{$A\xea\xa3h9v\xa4[\xaf'
 
 
@@ -38,40 +37,26 @@ def is_logged_in(f):
     def wrap(*args, **kwargs):
         if 'logged_in' in session:
             return f(*args, **kwargs)
-
         else:
             flash("Unauthorised please log in", 'danger')
             return redirect(url_for('login'))
     return wrap
 
-# # index route
-# @app.route('/mail', methods=['GET'])
-# def send_mail():
-#     try:
-#         msg=Message("Send Mail Redfive!",
-#             sender="inforedfive@gmail.com",
-#             recipients=["sekitocharlse@gmail.com", "bozicslxye1@gmail.com"])
-#         msg.html = "Yo \n <p> Have you registered for the emails yet</p> "
-#         mail.send(msg)
-#         return "it worked tho "
-#     except Exception as e:
-#         return str(e)
-
-
 # index route
-@app.route('/', methods=['GET',"POST"])
+
+
+@app.route('/', methods=['GET', "POST"])
 def index():
-    if request.method =='POST':
+    if request.method == 'POST':
         name = request.form['fullname']
         email = request.form['email']
-        num=request.form['tel']
-        #print(num)
+        num = request.form['tel']
         # create cursor to the db
         cur = mysql.connection.cursor()
 
         # execute
         cur.execute("INSERT INTO bookregister(name,email,phone) VALUES(%s,%s,%s)",
-                    (name, email,num))
+                    (name, email, num))
 
         # commit to db
         mysql.connection.commit()
@@ -83,27 +68,22 @@ def index():
     return render_template('index.html')
 
 # index recipes
-
-
 @app.route('/recipes')
 def recipes():
     return render_template('recipes.html')
 
 # index lunchbox
-
-
 @app.route('/lunchbox')
 def lunchbox():
     return render_template('lunchbox.html')
 
 # index dinnershow
-#working on the emailing feature of the app.
-
-@app.route('/dinnershow',methods = ['POST', 'GET'] )
+# working on the emailing feature of the app.
+@app.route('/dinnershow', methods=['POST', 'GET'])
 def dinnershow():
-    if request.method =='POST':
-        firstname =request.form['firstname']
-        lastname =request.form['lastname']
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
         phone1 = request.form['phone']
         phone2 = request.form['phone2']
         email = request.form['email']
@@ -117,17 +97,17 @@ def dinnershow():
         msg = "Hey i am booking for a dinnershow \nMY names are {} {} and my mobile numbers are {} {}\
         \nMY email is {}\nThe Date and time i am ordering are {} {} \nWe are {} adults and {} children our allergies {}\
         \nOur reservation notes are {} ".format(
-                        firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
-        #print(msg)
+            firstname, lastname, phone1, phone2, email, date, time, number_of_adults, number_of_children, allergies, notes)
+        # print(msg)
         try:
-            msg=Message("Dinnershow Bookings at Eatforlife",
-                sender="inforedfive@gmail.com",
-                recipients=["alice@eatforlife.ug","alina@eatforlife.ug", "diana@eatforlife.ug","admin@eatforlife.ug",\
-                "saidat@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
-            msg.body =  "Hey i am booking for a dinnershow. \nMy names are {} {} and my mobile numbers are {} {}.\
+            msg = Message("Dinnershow Bookings at Eatforlife",
+                          sender="inforedfive@gmail.com",
+                          recipients=["alice@eatforlife.ug", "alina@eatforlife.ug", "diana@eatforlife.ug", "admin@eatforlife.ug",
+                                      "saidat@eatforlife.ug", "bozicslxye1@gmail.com", "alexshyaka@eatforlife.ug"])
+            msg.body = "Hey i am booking for a dinnershow. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nThe Date and time i am ordering are {} {}. \nWe are {} adults and {} children our allergies {}.\
             \nOur reservation notes are {} .".format(
-                        firstname,lastname,phone1,phone2,email,date,time,number_of_adults,number_of_children,allergies,notes)
+                firstname, lastname, phone1, phone2, email, date, time, number_of_adults, number_of_children, allergies, notes)
             mail.send(msg)
             return "<p> thank you for your inquiry, one of the representatives will get back to you in 24 hours./<a href="">Click here to go back</a> </p> "
         except Exception as e:
@@ -137,26 +117,25 @@ def dinnershow():
 # index cookschool
 
 
-@app.route('/cookschool', methods=['GET','POST'])
+@app.route('/cookschool', methods=['GET', 'POST'])
 def cookschool():
     if request.method == "POST":
-        firstname =request.form['firstname']
-        lastname =request.form['lastname']
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
         phone1 = request.form['phone']
         phone2 = request.form['phone2']
-        email=request.form['email']
-        notes=request.form['notes']
-        num_of_people=request.form['otherpeople']
-        customer_allergies=request.form['allergies']
+        email = request.form['email']
+        notes = request.form['notes']
+        num_of_people = request.form['otherpeople']
+        customer_allergies = request.form['allergies']
         try:
-            msg=Message("Cookschool Bookings at Eatforlife",
-                sender="inforedfive@gmail.com",
-                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug"\
-                ,"diana@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
-            msg.body =  "Hey i am booking for a Cookschool. \nMy names are {} {} and my mobile numbers are {} {}.\
+            msg = Message("Cookschool Bookings at Eatforlife",
+                          sender="inforedfive@gmail.com",
+                          recipients=["alina@eatforlife.ug", "admin@eatforlife.ug", "saidat@eatforlife.ug", "diana@eatforlife.ug", "bozicslxye1@gmail.com", "alexshyaka@eatforlife.ug"])
+            msg.body = "Hey i am booking for a Cookschool. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nWe are {} people and our allergies {}.\
             \nOur reservation notes are {} .".format(
-                        firstname,lastname,phone1,phone2,email,num_of_people,customer_allergies,notes)
+                firstname, lastname, phone1, phone2, email, num_of_people, customer_allergies, notes)
             mail.send(msg)
             return "<p> Thanks for booking a cookschool <a href="">Click here to go back</a> </p> "
         except Exception as e:
@@ -177,18 +156,18 @@ def openhouse():
         email = request.form['email']
         age = request.form['age']
         working_state = request.form['allergies']
-        industry=request.form['industry']
+        industry = request.form['industry']
         notes = request.form['notes']
         try:
-            msg=Message("Open House Bookings at Eatforlife",
-                sender="inforedfive@gmail.com",
-                recipients=["alina@eatforlife.ug","admin@eatforlife.ug","saidat@eatforlife.ug","priscilla@eatforlife.ug",\
-                "vivian@eatforlife.ug", "bozicslxye1@gmail.com","alexshyaka@eatforlife.ug"])
-            msg.body =  "Hey i am booking for a OpenHouse. \nMy names are {} {} and my mobile numbers are {} {}.\
+            msg = Message("Open House Bookings at Eatforlife",
+                          sender="inforedfive@gmail.com",
+                          recipients=["alina@eatforlife.ug", "admin@eatforlife.ug", "saidat@eatforlife.ug", "priscilla@eatforlife.ug",
+                                      "vivian@eatforlife.ug", "bozicslxye1@gmail.com", "alexshyaka@eatforlife.ug"])
+            msg.body = "Hey i am booking for a OpenHouse. \nMy names are {} {} and my mobile numbers are {} {}.\
             \nMy email is {}.\nMy age is {} and my working state is {}.\
             \nMy working industry is {} \
             \nMy OpenHouse notes are {} .".format(
-                        firstname,lastname,phone1,phone2,email,age,working_state,industry,notes)
+                firstname, lastname, phone1, phone2, email, age, working_state, industry, notes)
             mail.send(msg)
             return "<p> Thanks for the  Openhouse reservation <a href="">Click here to go back</a> </p> "
         except Exception as e:
@@ -203,15 +182,11 @@ def usageclub():
     return render_template('usageclub.html')
 
 # life changing route
-
-
 @app.route('/lifechanging')
 def lifechanging():
     return render_template('lifechanging.html')
 
 # blog route
-
-
 @app.route('/blog')
 def blog():
     # create cursor
@@ -227,7 +202,7 @@ def blog():
 
     if result > 0:
         return render_template('blog.html', articles=articles,
-         article=random_article, newest=newest, article1=article1)
+                               article=random_article, newest=newest, article1=article1)
 
     else:
         msg = "No articles where found"
@@ -244,8 +219,6 @@ def about():
     return render_template('about.html')
 
 # login route
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -276,16 +249,11 @@ def dashboard():
 
     # create cursor
     cur = mysql.connection.cursor()
-
     # get articles
     result = cur.execute("SELECT * FROM articles")
     articles = cur.fetchall()
     if result > 0:
-
         return render_template('dashboard.html', articles=articles)
-
-
-
 
     else:
         msg = "No articles where found"
@@ -293,24 +261,22 @@ def dashboard():
 
     cur.close()
 
-# dashboard
+# register route
 @app.route('/registered')
 @is_logged_in
 def registered():
 
     # create cursor
     cur = mysql.connection.cursor()
-
     # get registered users
-    register_users= cur.execute("SELECT * FROM bookregister")
+    register_users = cur.execute("SELECT * FROM bookregister")
     users = cur.fetchall()
-    # print(users)
     if register_users > 0:
-        return render_template('registered.html',users=users)
+        return render_template('registered.html', users=users)
 
     else:
         msg = "No users where found"
-        return render_template('registered.html',msg=msg)
+        return render_template('registered.html', msg=msg)
     cur.close()
 
 # creating articles form
@@ -331,7 +297,6 @@ class ArticleForm(Form):
 def edit_article(id):
     # create cursor
     cur = mysql.connection.cursor()
-
     # get article by id
     result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
     article = cur.fetchone()
@@ -344,7 +309,6 @@ def edit_article(id):
     form.image.data = article['images']
 
     # fill the form of the fields
-
     if request.method == "POST" and form.validate():
         title = request.form['title']
         body = request.form['body']
@@ -369,20 +333,15 @@ def edit_article(id):
     return render_template('edit_article.html', form=form)
 
 # delete articles
-
-
 @app.route('/delete_article/<string:id>', methods=['GET', 'POST'])
 @is_logged_in
 def delete_article(id):
     # create db cursor
     cur = mysql.connection.cursor()
-
     # Execute
     cur.execute("DELETE FROM articles WHERE id=%s", [id])
-
     # commit to db
     mysql.connection.commit()
-
     # close connection
     cur.close()
 
@@ -399,9 +358,6 @@ def add_article():
         title = form.title.data
         body = form.body.data
         image = form.image.data
-
-        # print(image)
-
         # create cursor to the db
         cur = mysql.connection.cursor()
 

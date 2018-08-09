@@ -185,9 +185,9 @@ def openhouse():
 
 
 # usageclub
-# @app.route('/usageclub')
-# def usageclub():
-#     return render_template('usageclub.html')
+@app.route('/usageclub')
+def usageclub():
+    return render_template('usageclub.html')
 
 # life changing route
 @app.route('/lifechanging')

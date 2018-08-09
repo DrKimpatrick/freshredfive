@@ -29,6 +29,14 @@
 			  	</div>
 			</div>
 			<div class="carousel-item item">
+					<img class="d-block w-100" src="static/images/carousel/3.jpg" alt="Carousel Image">
+				<div class="carousel-caption d-none d-md-block">
+					<h1></h1>
+					<h5></h5>
+					<h6><a href={{ url_for("lifechanging")}}>Learn More</a></h6>
+				</div>
+			</div>
+			<div class="carousel-item item">
 			  	<img class="d-block w-100" src="static/images/carousel/6.jpg" alt="Carousel Image">
 				<div class="carousel-caption d-none d-md-block">
 				    <h6>
@@ -68,9 +76,9 @@
 						<div class="form-group">
 							<input type="text" class="form-control input-lg" name="tel" id="tel" value="{{ request.form.tel}}"  placeholder="Telephone">
 						</div>
+
 						
-						
-						<button type="submit" class="btn btn-primary" name="btnDone" id="btnDone">Send Request</button>
+						<button type="submit" class="btn btn-primary" name="btnDone" id="btnDone" onclick="display">Send Request</button>
 					</form>
 				</div>
 				<!-- Modal footer -->
@@ -123,5 +131,11 @@
 		</div>
 	</div>
 
+	
+	<script>
+		function display(){
+			alert('Thanks')
+		}
 
+	</script> 
 {% endblock %}

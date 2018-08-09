@@ -64,8 +64,16 @@ def index():
         # close connection
         cur.close()
 
+        # return redirect(url_for('download'))
         return send_file("static/We Change Lives DAnny\'s Book FInal.pdf")
     return render_template('index.html')
+
+
+# index recipes
+@app.route('/download')
+def download():
+    flash('Thank you for your subscription.', 'success')
+    return render_template('download.html')
 
 # index recipes
 @app.route('/recipes')
